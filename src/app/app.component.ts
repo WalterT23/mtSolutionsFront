@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonService } from './servicios/common.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mtSolutionsFront';
+  title = 'Mi tienda';
+
+  constructor(public common:CommonService){
+    
+
+  }
 }
+
+

@@ -1,1 +1,169 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+:root {
+    --black-color: #263238;
+    --rosa-color: #fff7e4;
+    --naranja-color: #d17630;
+}
+
+@font-face {
+    font-family: "Ubuntu Bold";
+    src: url("assets/fuentes/Ubuntu-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url("assets/fuentes/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url("assets/iconos/iconos_materialize.woff2") format("woff2");
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+}
+
+.nav-wrapper {
+    background-color: var(--black-color);
+}
+
+.bodyClass {
+    background: var(--rosa-color);
+}
+
+.centrado {
+    text-align: center;
+}
+
+a.brand-logo {
+    margin-left: 1%;
+}
+
+.margin-x {
+    margin-top: 12%;
+    height: 10vh;
+}
+
+.margin-h {
+    height: 10vh;
+}
+
+.mybtn {
+    text-transform: none !important;
+    font-family: Ubuntu;
+    background-color: var(--black-color) !important;
+    border: 1px solid white !important;
+    margin-top: 5%;
+    border-radius: 5px;
+}
+
+.mybtnInv {
+    text-transform: none !important;
+    font-family: Ubuntu;
+    background-color: white !important;
+    border: 1px solid var(--black-color) !important;
+    margin-top: 5%;
+    border-radius: 5px;
+    color: var(--black-color);
+}
+
+.centrado {
+    text-align: center;
+}
+
+.derecha {
+    text-align: right;
+}
+
+.izquierda {
+    text-align: left;
+}
+
+input.valid:not([type]),
+input.valid:not([type]):focus,
+input.valid[type=text]:not(.browser-default),
+input.valid[type=text]:not(.browser-default):focus,
+input.valid[type=password]:not(.browser-default),
+input.valid[type=password]:not(.browser-default):focus,
+input.valid[type=email]:not(.browser-default),
+input.valid[type=email]:not(.browser-default):focus,
+input.valid[type=url]:not(.browser-default),
+input.valid[type=url]:not(.browser-default):focus,
+input.valid[type=time]:not(.browser-default),
+input.valid[type=time]:not(.browser-default):focus,
+input.valid[type=date]:not(.browser-default),
+input.valid[type=date]:not(.browser-default):focus,
+input.valid[type=datetime]:not(.browser-default),
+input.valid[type=datetime]:not(.browser-default):focus,
+input.valid[type=datetime-local]:not(.browser-default),
+input.valid[type=datetime-local]:not(.browser-default):focus,
+input.valid[type=tel]:not(.browser-default),
+input.valid[type=tel]:not(.browser-default):focus,
+input.valid[type=number]:not(.browser-default),
+input.valid[type=number]:not(.browser-default):focus,
+input.valid[type=search]:not(.browser-default),
+input.valid[type=search]:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus,
+.select-wrapper.valid>input.select-dropdown {
+    border-bottom: 1px solid var(--naranja-color) !important;
+    box-shadow: 0 1px 0 0 var(--naranja-color) !important;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid var(--naranja-color) !important;
+    box-shadow: 0 1px 0 0 var(--naranja-color) !important;
+}
+
+.input-field>label,
+label.active,
+label:hover {
+    color: var(--naranja-color) !important;
+}
+
+input:not([type]),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea.materialize-textarea {
+    border-bottom: 1px solid var(--naranja-color) !important;
+}
+
+.input-field .prefix.active {
+    color: gray;
+}
