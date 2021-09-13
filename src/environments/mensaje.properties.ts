@@ -11,5 +11,19 @@ export const PROPERTIES = {
     tituloUsuario: 'Usuarios',
     buttonUsuario: 'Crear Usuario',
     mensajeAccion: 'Presione "Enter" para confirmar búsqueda',
-    verUsuario: 'Ver'
+    verUsuario: 'Ver',
+    tituloNuevoUsuario: 'Alta de Usuario',
+    tituloVerUsuario: 'Datos del usuario',
+    nombreCompleto: 'Nombre',
+    apellidoCompleto: 'Apellido',
+    direccion: 'Dirección',
+    cedula: 'Cédula de identidad',
+    telefono: 'Número de telefono',
+    email: 'Email',
+    guardar: 'Guardar',
+    alerta: 'Debe completar todos los campos',
+    roles: 'Roles y permisos',
+    selecciona: 'Seleccioná un rol',
+    rolSelecciona: 'Permisos del rol ',
+
 }

@@ -30,7 +30,7 @@ export class RequestInterceptor implements HttpInterceptor {
                 this.spinnerService.show();
             }
         }
-        // this.intervalCargando = 
+        // this.intervalCargando =
 
         return next.handle(request).pipe(tap(
             (ev: HttpEvent<any>) => {
@@ -53,21 +53,17 @@ export class RequestInterceptor implements HttpInterceptor {
                     } else {
                         this.commonSrv.showMsg2("Usted no tiene permiso para acceder al recurso solicitado.", "error");
                     }
-                    
+
                 }
 
                 // Si es un error por token expirado entonces manda al login
                 //if (error.error && error.error.error == "invalid_token") {
                 if (error.status == '403') {
-                    let token: TokenDTO = {
-                        user:'',
-                        userDetail : {}
-                    }
                     this.commonSrv.showMsg2("Su sesión ha expirado", "error");
-                    this.commonSrv.clearToken(token);
-                    setTimeout(() => {
-                        this.router.navigate( ['/login'] );
-                    }, 0);
+                    this.commonSrv.logoutX();
+                    //setTimeout(() => {
+                        //this.router.navigate( ['/login'] );
+                    //}, 0);
                 }
 
                 this.clearIntervalFunct(request.url)

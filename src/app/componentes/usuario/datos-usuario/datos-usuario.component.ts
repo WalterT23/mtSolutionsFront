@@ -6,6 +6,7 @@ import { CommonService } from '../../../servicios/common.service';
 import { PaginationDTO } from '../../../model/paginationDTO';
 import { PROPERTIES } from '../../../../environments/mensaje.properties';
 import { CONSTANTES } from '../../constantes';
+import { Location } from '@angular/common';
 
 declare var M: any;
 
@@ -15,35 +16,40 @@ declare var M: any;
   styleUrls: ['./datos-usuario.component.css']
 })
 export class DatosUsuarioComponent implements OnInit {
-  
+
   txt: any;
+  location: Location;
+  titulo: string = '';
   file: any;
-  fileSize: number; 
+  fileSize: number;
   fileExtension: any;
   formCtrl: FormGroup;
   cedulaFormateado: any;
-  dataSelect: Array<ObjectSelectPerfil> = [];
+  dataSelect: Array<RolDTO> = [];
   perfilLoanding: boolean;
-  perfil:any;
+  rol:any;
   listaFuncionalidades: any[] = [];
   pagination: PaginationDTO;
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
+    location: Location,
     private service: UsuarioService,
     private commonSrv: CommonService) {
     this.txt = PROPERTIES;
+    this.commonSrv.apagado = true;
     this.fileSize = 0;
     this.formCtrl = new FormGroup({
       fileName: new FormControl(undefined, [Validators.required]),
       nombreUsuario: new FormControl(undefined, [Validators.required]),
       apellidoUsuario: new FormControl(undefined, [Validators.required]),
-      cargo: new FormControl(undefined, [Validators.required]),
+      direccion: new FormControl(undefined, [Validators.required]),
       cedula: new FormControl(undefined, [Validators.required]),
       telefono: new FormControl(undefined, [Validators.required]),
       email: new FormControl(undefined, [Validators.required]),
-      perfilSeleccion: new FormControl(undefined),
+      rolSeleccion: new FormControl(undefined),
       items: new FormArray([])
     });
+    this.location = location;
     this.perfilLoanding = true;
 
     this.pagination = {
@@ -53,23 +59,16 @@ export class DatosUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let aux = this.location.path().search(CONSTANTES.CREAR_USUARIO.route);
+    if (aux !== -1) {
+      this.titulo = this.txt.tituloNuevoUsuario;
+    } else {
+      this.titulo = this.txt.tituloVerUsuario;
+    }
     M.updateTextFields();
-    /*var elems = document.querySelector('.bordeadito');
-    M.CharacterCounter.init(elems);*/
-     // Tooltip init
-     var tooltip = document.querySelectorAll('.tooltipped');
-     M.Tooltip.init(tooltip, {});
-
-    // Dropdown init
-    var dropdown = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(dropdown, { hover: true });
-
-    //collapsible
-    var elemsc = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(elemsc, {});
-    
-    this.obtenerPerfiles();
+    this.obtenerRoles();
     this.obtenerFuncionalidades();
+    //this.obtenerPerfiles();
   }
 
   get getFileName(): any {
@@ -84,8 +83,8 @@ export class DatosUsuarioComponent implements OnInit {
     return this.formCtrl.get('apellidoUsuario');
   }
 
-  get getCargo(): any {
-    return this.formCtrl.get('cargo');
+  get getDireccion(): any {
+    return this.formCtrl.get('direccion');
   }
 
   get getCedula(): any {
@@ -100,8 +99,8 @@ export class DatosUsuarioComponent implements OnInit {
     return this.formCtrl.get('email');
   }
 
-  get getPerfilSeleccion(): any {
-    return this.formCtrl.get('perfilSeleccion');
+  get getRolSeleccion(): any {
+    return this.formCtrl.get('rolSeleccion');
   }
 
   get getItems(): FormArray {
@@ -151,9 +150,7 @@ export class DatosUsuarioComponent implements OnInit {
   }
 
   irAUsuario() {
-    setTimeout(() => {
-      this.router.navigate([CONSTANTES.USUARIO.route])
-    }, 100)
+    this.router.navigate([CONSTANTES.USUARIO.route]);
   }
 
   obtenerPerfiles() {
@@ -171,8 +168,21 @@ export class DatosUsuarioComponent implements OnInit {
     )*/
   }
 
+  obtenerRoles() {
+    this.service.getListaRoles().subscribe(
+      respuesta => {
+          this.cargarSelect(respuesta.data?.lista);
+      },
+      error => {
+        if(error && error.status != 403) {
+          this.commonSrv.showMsg2(error.error.mensaje, "error",5000);
+        }
+      }
+    )
+  }
+
   obtenerFuncionalidades() {
-   /* this.service.getListaFuncionalidades().subscribe(
+    this.service.getListaFuncionalidades().subscribe(
       respuesta => {
           this.listaFuncionalidades=respuesta.data?.lista;
           //this.perfilLoanding = false;
@@ -180,17 +190,17 @@ export class DatosUsuarioComponent implements OnInit {
       error => {
         if(error && error.status != 403) {
           this.commonSrv.showMsg2(error.error.mensaje, "error",5000);
-          this.perfilLoanding = false;
+          //this.perfilLoanding = false;
         }
       }
-    )*/
+    )
   }
 
   onChange() {
     this.dataSelect.forEach(obj => {
-      if (obj.perfil == this.getPerfilSeleccion.value) {
-        this.getPerfilSeleccion.setValue(obj.perfil);
-        this.perfil = obj
+      if (obj?.id == this.getRolSeleccion.value) {
+        this.getRolSeleccion.setValue(obj.id);
+        this.rol = obj
         setTimeout(() => {
           this.loadItems()
         }, 0);
@@ -199,31 +209,24 @@ export class DatosUsuarioComponent implements OnInit {
   }
 
   onClear() {
-    this.getPerfilSeleccion.setValue(this.dataSelect[0].perfil);
-    this.perfil = this.dataSelect[0];
+    this.getRolSeleccion.setValue(this.dataSelect[0].id);
+    this.rol = this.dataSelect[0];
     this.loadItems()
   }
 
   cargarSelect(lista: Array<any>) {
-    let obj: ObjectSelectPerfil;
-    this.dataSelect = new Array<ObjectSelectPerfil>();
+    //let obj: RolDTO;
+    //this.dataSelect = new Array<RolDTO>();
+    this.dataSelect = lista;
+
     if (lista) {
-      lista.forEach(dato => {
-        obj = {
-          perfil: dato.perfil,
-          nombre: dato.nombre,
-          activo: dato.activo,
-          listaFuncionalidades: dato.listaFuncionalidades
-        }
-        this.dataSelect.push(obj);
-      });
       setTimeout(() => {
-        this.getPerfilSeleccion.setValue(this.dataSelect[0].perfil);
-        this.perfil = this.dataSelect[0];
+        this.getRolSeleccion.setValue(this.dataSelect[0].id);
+        this.rol = this.dataSelect[0];
         this.loadItems()
       }, 100);
     }
-    
+
   }
 
   cambioPagina(p: number) {
@@ -233,12 +236,12 @@ export class DatosUsuarioComponent implements OnInit {
   loadItems() {
     this.getItems.clear();
     let control: FormGroup;
-    
+
     if (this.listaFuncionalidades && this.listaFuncionalidades.length) {
       this.listaFuncionalidades.forEach( x => {
         control = new FormGroup({
           activo: new FormControl({value:false, disabled:true}),
-          id: new FormControl(x.funcionalidad),
+          id: new FormControl(x.id),
           nombre: new FormControl(x.nombre),
           descripcion: new FormControl(x.descripcion)
         });
@@ -246,44 +249,73 @@ export class DatosUsuarioComponent implements OnInit {
       });
       if (this.getItems.value) {
         this.getItems.controls.forEach(e=> {
-          /*this.perfil?.listaFuncionalidades.forEach(z => {
-            if (e?.get('id')?.value == z) {
-              e.get('activo')?.setValue(true);
+          this.rol?.perfiles.forEach((z:any) => {
+            if (z) {
+              z.funcionalidades.forEach((element:any) => {
+                if (e?.get('id')?.value == element?.id) {
+                  e.get('activo')?.setValue(true);
+                }
+              });
             }
-          })*/
+          })
         })
       }
     }
   }
 
   crearUsuario() {
-      if ((!this.getNombreUsuario.value || this.getNombreUsuario.value?.trim() == ' ') || 
-          (!this.getApellidoUsuario.value || this.getApellidoUsuario.value?.trim() == ' ') || 
-          (!this.getCargo.value && this.getCargo.value?.trim() == ' ') || 
+      if ((!this.getNombreUsuario.value || this.getNombreUsuario.value?.trim() == ' ') ||
+          (!this.getApellidoUsuario.value || this.getApellidoUsuario.value?.trim() == ' ') ||
+          (!this.getDireccion.value && this.getDireccion.value?.trim() == ' ') ||
           (!this.getCedula.value && this.getCedula.value?.trim() == ' ') ||
-          (!this.getTelefono.value && this.getTelefono.value?.trim() == ' ') ||
-          (!this.getEmail.value && this.getEmail.value?.trim() == ' ')) {
+          (!this.getTelefono.value && this.getTelefono.value?.trim() == ' ')) {
           this.commonSrv.showMsg2(this.txt.alerta, 'info', 5000);
       } else {
         let obj= {
           nombre: this.getNombreUsuario.value.trim(),
           apellido: this.getApellidoUsuario.value.trim(),
-          cargo: this.getCargo.value.trim(),
+          direccion: this.getDireccion.value.trim(),
           documento: this.getCedula.value.trim().replaceAll('.',''),
           telefono: this.getTelefono.value.trim(),
-          email: this.getEmail.value.trim(), 
-          perfil: this.getPerfilSeleccion.value
+          email: this.getEmail.value.trim(),
+          rol: this.getRolSeleccion.value
         }
-        console.log(obj)
+        this.service.crearUsuario(obj).subscribe(
+          respuesta => {
+              this.commonSrv.showMsg2(respuesta?.data, "success", 5000);
+              setTimeout(() => {
+                this.irAUsuario();
+              }, 300);
+          },
+          error => {
+            if(error && error.status != 403) {
+              this.commonSrv.showMsg2(error.error.message, "error",5000);
+            }
+          }
+        )
       }
 
   }
 
 }
 
-export interface ObjectSelectPerfil {
-  perfil:string,
-  nombre: string,
+export interface RolDTO {
+  id:string,
+  nombre:string,
+  descripcion:string,
   activo:boolean,
-  listaFuncionalidades: string
+  perfiles?:PerfDTO[]
+}
+export interface PerfDTO {
+  id:string,
+  nombre:string,
+  descripcion:string,
+  activo:boolean,
+  funcionalidades?:FuncDTO[]
+}
+export interface FuncDTO {
+  id:string,
+  nombre:string,
+  descripcion:string,
+  activo:boolean
 }

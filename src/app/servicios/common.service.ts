@@ -11,7 +11,7 @@ declare var M: any;
 })
 export class CommonService {
   url: string = environment.base_url;
-  socalero: boolean = false;
+  apagado: boolean = false;
   serviceProcesando = new Subject<boolean>();
   cantidadLlamadasEspera = new Subject<number>();
   urlSinLoading: string[] = [];
@@ -33,6 +33,11 @@ export class CommonService {
 
   clearToken(token: any) {
     this.authService.authData =  token;
+  }
+
+  logoutX() {
+    this.apagado = true;
+    this.authService.logOut();
   }
 
   private _getHeaders(opt:any=null): { headers: HttpHeaders } {

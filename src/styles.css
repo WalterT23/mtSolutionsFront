@@ -52,15 +52,16 @@
 
 a.brand-logo {
     margin-left: 1%;
+    cursor: pointer;
 }
 
 .margin-x {
     margin-top: 12%;
-    height: 10vh;
+    height: 13vh;
 }
 
 .margin-h {
-    height: 10vh;
+    height: 13vh;
 }
 
 .mybtn {
@@ -142,11 +143,12 @@ textarea.materialize-textarea:focus:not([readonly]) {
     box-shadow: 0 1px 0 0 var(--naranja-color) !important;
 }
 
-.input-field>label,
+
+/*.input-field>label,
 label.active,
 label:hover {
     color: var(--naranja-color) !important;
-}
+}*/
 
 input:not([type]),
 input[type=text]:not(.browser-default),
@@ -166,4 +168,20 @@ textarea.materialize-textarea {
 
 .input-field .prefix.active {
     color: gray;
+}
+
+.ngx-pagination .current {
+    background: var(--black-color) !important;
+}
+
+.bottom-none {
+    margin-bottom: 0px;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: var(--black-color);
+}
+
+.switch label .lever {
+    margin: 0 5px;
 }

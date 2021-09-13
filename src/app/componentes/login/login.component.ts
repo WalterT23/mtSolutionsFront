@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
       recordar: new FormControl(undefined)
     });
     this.texto = PROPERTIES;
+
+    this.commonSrv.apagado = false;
     this.band = false;
     this.textoojo = "Mostrar contraseña";
    }
@@ -87,7 +89,7 @@ export class LoginComponent implements OnInit {
         this.textoojo = "Mostrar contraseña";
         this.cambiarType();
       }
-    } 
+    }
   }
 
   cambiarType() {
@@ -104,15 +106,15 @@ export class LoginComponent implements OnInit {
     loginAction(event:any) {
       event.preventDefault();
       event.stopImmediatePropagation();
-        
+
       let usuario= {
         username: this.getUser.value,
         password: this.getPass.value
       };
-      
+
       if (this.getRecordar.touched) {
         if (this.getRecordar.value && this.getUser.value.trim() != '') {
-          localStorage.setItem('record',this.getUser.value); 
+          localStorage.setItem('record',this.getUser.value);
         } else {
           localStorage.removeItem('record');
         }
@@ -121,7 +123,7 @@ export class LoginComponent implements OnInit {
         respuesta => {
           if(respuesta.token) {
             if (respuesta.mensaje) {
-              
+
               this.auth.authData = respuesta;
               if (respuesta.enable) {
                 this.router.navigate( [CONSTANTES.DASHBOARD.route] );
@@ -134,8 +136,8 @@ export class LoginComponent implements OnInit {
         error => {
           if(error && error.error && error.error.mensaje) {
             this.commonSrv.showMsg2(error.error.mensaje, "error",5000);
-          }  
+          }
         }
-      ) 
+      )
     }
 }

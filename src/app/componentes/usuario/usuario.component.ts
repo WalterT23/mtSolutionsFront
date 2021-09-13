@@ -17,6 +17,7 @@ declare var M: any;
 })
 export class UsuarioComponent implements OnInit {
   txt: any;
+  path: any;
   formCtrl: FormGroup;
   arrayUsuario:any[] = [];
   totalUsuario:number=0;
@@ -24,10 +25,12 @@ export class UsuarioComponent implements OnInit {
   pagination: PaginationDTO;
   filtroActivo: boolean= false;
 
-  constructor(public router:Router, 
+  constructor(public router:Router,
     public service: UsuarioService,
     private commonSrv: CommonService) {
     this.txt = PROPERTIES;
+    this.path = CONSTANTES;
+    this.commonSrv.apagado = true;
     this.formCtrl = new FormGroup({
       buscador: new FormControl()
     });
@@ -38,23 +41,10 @@ export class UsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     // Tooltip init
-     var tooltip = document.querySelectorAll('.tooltipped');
-     M.Tooltip.init(tooltip, {});
-
-    // Dropdown init
-    var dropdown = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(dropdown, { hover: true });
-
-    //collapsible
-    var elemsc = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(elemsc, {});
-    
     M.updateTextFields();
     var elems = document.getElementById('buscador_id');
     M.CharacterCounter.init(elems);
     this.obtenerUsuarios(this.pagination.pageSize, 0);
-    this.commonSrv.socalero = true;
   }
 
   get getBuscador(): any {
@@ -96,7 +86,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   verAction() {
-
+    this.router.navigate([CONSTANTES.CREAR_USUARIO.route]);
   }
 
 
@@ -110,7 +100,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   crearNuevoUsuario() {
-    this.router.navigate([CONSTANTES.USUARIO.route]);
+    this.router.navigate([CONSTANTES.CREAR_USUARIO.route]);
   }
 
   buscarAccion(e:any) {
@@ -147,5 +137,5 @@ export class UsuarioComponent implements OnInit {
     this.obtenerUsuarios(this.pagination.pageSize, 0);
   }
 
-  
+
 }

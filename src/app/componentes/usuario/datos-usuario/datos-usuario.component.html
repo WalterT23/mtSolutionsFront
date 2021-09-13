@@ -1,5 +1,5 @@
-<div [formGroup]="formCtrl" class="row overflow_positivo">
-    <div class="col s10 m10 l10">
+<div [formGroup]="formCtrl" class="row">
+    <div class="col s10 m10 l10 offset-m1 offset-l1">
         <div class="row bottom-none">
             <div class="row div-volver">
                 <button class="btn-flat volver" (click)="irAUsuario()"><i class="material-icons ">chevron_left</i>Volver</button>
@@ -8,7 +8,7 @@
         <!--TITULO-->
         <div class="row">
             <div class="col s6 m6 l6">
-                <p class="tituloOP">{{ txt.tituloNuevoUsuario }}</p>
+                <p class="tituloOP">{{ titulo }}</p>
             </div>
         </div>
         <!--GESTION DE IMAGEN-->
@@ -21,172 +21,98 @@
                     </div>
                 </div>
             </div>
-            <!--SUBA ARCHIVO-->
-            <div *ngIf="false" class="col s12 m10 l10">
-                <form enctype="multipart/form-data">
-                    <span>
-                        <input id="idinputfile" type="file" name="archivosolicitado[]"
-                            (change)="fileChangeEvent($event)" multiple accept=".csv, .xlsx, .xls">
-                    </span>
-                    <label *ngIf="!getFileName.valid" for="idinputfile">
-                        <div style="margin-top: 4%;">
-                            <span style="color: #039be5;">
-                                <i style="margin-right: 2%; font-size: 1.5rem;"
-                                    class="small material-icons">cloud_upload
-                                </i>
-                                {{txt.subida}}
-                            </span>
-                        </div>
-                        <div><span>{{txt.maximoarchivo}}</span></div>
-                    </label>
-                    <label *ngIf="getFileName.valid" for="idinputfile">
-                        <div class="row" style="margin-top: 4%;">
-                            <div class="col s12 m12 l12">
-                                <div class="row bottom-none">
-                                    <div class="col s3 m3 l3 offset-s3 offset-m3 offset-l3"
-                                        style="text-align: left;">
-                                        <span style="font-size: 14px;">
-                                            Nombre archivo:
-                                        </span>
-                                    </div>
-                                    <div class="col s6 m6 l6" style="text-align: left;">
-                                        <span style="font-size: 15px;">
-                                            {{getFileName.value}}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="row bottom-none">
-                                    <div class="col s3 m3 l3 offset-s3 offset-m3 offset-l3"
-                                        style="text-align: left;">
-                                        <span style="font-size: 14px;">
-                                            Tamaño:
-                                        </span>
-                                    </div>
-                                    <div class="col s6 m6 l6" style="text-align: left;">
-                                        <!--span style="font-size: 15px;">
-                                            {{fileSize | miles}} bytes
-                                        </span-->
-                                    </div>
-                                </div>
-                                <div *ngIf="false" class="row bottom-none">
-                                    <div class="col s3 m3 l3 offset-s3 offset-m3 offset-l3"
-                                        style="text-align: left;">
-                                        <span style="color: red; font-size: 14px;">
-                                            Atención:
-                                        </span>
-                                    </div>
-                                    <div class="col s6 m6 l6" style="text-align: left;">
-                                        <span style="color: red; font-size: 15px;">
-                                            Solo se permite archivo xlsx
-                                        </span>
-                                    </div>
-                                </div>
-                                <div *ngIf="false" class="row bottom-none">
-                                    <div class="col s3 m3 l3 offset-s3 offset-m3 offset-l3"
-                                        style="text-align: left;">
-                                        <span style="color: red; font-size: 14px;">
-                                            Atención:
-                                        </span>
-                                    </div>
-                                    <div class="col s6 m6 l6" style="text-align: left;">
-                                        <span style="color: red; font-size: 15px;">
-                                            El tamaño del archivo supera los 1 Mb permitido
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </label>
-                </form>
-            </div>
+
             <!--DATOS DEL USUARIO-->
-            <div class="row bottom-none">
-                <div class="input-field col s12 m12 l12 bottom-none">
-                    <label class="relative" for="id_nombre">{{txt.nombreCompleto}}</label>
-                    <input class="bordeadito cajon" [title]="'Ingrese el nombre completo'" maxlength="60" style="height: 2rem;" formControlName="nombreUsuario" id="id_nombre" type="text">
+            <div class="col s12 m10 l10">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m12 l12 bottom-none">
+                        <label class="relative" for="id_nombre">{{txt.nombreCompleto}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese el nombre completo'" maxlength="60" style="height: 2rem;" formControlName="nombreUsuario" id="id_nombre" type="text">
+                    </div>
                 </div>
-            </div>
-            <div class="row bottom-none">
-                <div class="input-field col s12 m12 l12 bottom-none">
-                    <label class="relative" for="id_apellido">{{txt.apellidoCompleto}}</label>
-                    <input class="bordeadito cajon" [title]="'Ingrese el apellido completo'" maxlength="60" style="height: 2rem;" formControlName="apellidoUsuario" id="id_apellido" type="text">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m12 l12 bottom-none">
+                        <label class="relative" for="id_apellido">{{txt.apellidoCompleto}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese el apellido completo'" maxlength="60" style="height: 2rem;" formControlName="apellidoUsuario" id="id_apellido" type="text">
+                    </div>
                 </div>
-            </div>
-            <div class="row bottom-none">
-                <div class="input-field col s12 m12 l12 bottom-none">
-                    <label class="relative" for="id_cargo">{{txt.cargo}}</label>
-                    <input class="bordeadito cajon" [title]="'Ingrese el cargo o una breve descripción de la función que realiza'" maxlength="60" style="height: 2rem;" formControlName="cargo" id="id_cargo" type="text">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m12 l12 bottom-none">
+                        <label class="relative" for="id_cedula">{{txt.cedula}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese el número de documento'" id="id_cedula" style="height: 2rem;" maxlength="10" (keyup)="formatearCi($event)" [(value)]="cedulaFormateado" formControlName="cedula" type="text">
+                    </div>
                 </div>
-            </div>
-            <div class="row bottom-none">
-                <div class="input-field col s12 m12 l12 bottom-none">
-                    <label class="relative" for="id_cedula">{{txt.cedula}}</label>
-                    <input class="bordeadito cajon" [title]="'Ingrese el número de documento'" id="id_cedula" style="height: 2rem;" maxlength="10" (keyup)="formatearCi($event)" [(value)]="cedulaFormateado" formControlName="cedula" type="text">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m12 l12 bottom-none">
+                        <label class="relative" for="id_telefono">{{txt.telefono}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese el número de telefono'" maxlength="12" style="height: 2rem;" formControlName="telefono" id="id_telefono" type="text">
+                    </div>
                 </div>
-            </div>
-            <div class="row bottom-none">
-                <div class="input-field col s12 m12 l12 bottom-none">
-                    <label class="relative" for="id_telefono">{{txt.telefono}}</label>
-                    <input class="bordeadito cajon" [title]="'Ingrese el número de telefono'" maxlength="12" style="height: 2rem;" formControlName="telefono" id="id_telefono" type="text">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m12 l12 bottom-none">
+                        <label class="relative" for="id_email">{{txt.email}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese la dirección de correo'" maxlength="20" style="height: 2rem;" formControlName="email" id="id_email" type="text">
+                    </div>
                 </div>
-            </div>
-            <div class="row bottom-none">
-                <div class="input-field col s12 m12 l12 bottom-none">
-                    <label class="relative" for="id_email">{{txt.email}}</label>
-                    <input class="bordeadito cajon" [title]="'Ingrese la dirección de correo'" maxlength="20" style="height: 2rem;" formControlName="email" id="id_email" type="text">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m12 l12 bottom-none">
+                        <label class="relative" for="id_cargo">{{txt.direccion}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese la direccion de su casa'" maxlength="60" style="height: 2rem;" formControlName="direccion" id="id_direccion" type="text">
+                    </div>
                 </div>
             </div>
             <!--PERFILES Y PERMISOS-->
-            <div class="row">
-                <div class="col s12 m12 l12 titulo2">
-                    <span>{{txt.perfiles}}</span>
+            <div>
+                <div class="row">
+                    <div class="col s12 m12 l12 titulo2">
+                        <span>{{txt.roles}}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s12 m12 l12 titulo3">
-                    <span>{{txt.selecciona}}</span>
+                <div class="row">
+                    <div class="col s12 m12 l12 titulo3">
+                        <span>{{txt.selecciona}}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s12 m4 l4">
-                    <!--ng-select [virtualScroll]="true" [dropdownPosition]="'bottom'" [searchable]="false" [clearable]="false" id="idSelectorPerfil" class="custom2" [items]="dataSelect" formControlName="perfilSeleccion" bindLabel="nombre" bindValue="perfil" (change)="onChange()"
-                        (clear)="onClear()" [loading]="perfilLoanding">
-                    </ng-select-->
+                <div class="row">
+                    <div class="col s12 m4 l4">
+                        <ng-select [virtualScroll]="true" [dropdownPosition]="'bottom'" [searchable]="false" [clearable]="false" id="idSelectorRol" class="custom2" [items]="dataSelect" formControlName="rolSeleccion" bindLabel="nombre" bindValue="id" (change)="onChange()" (clear)="onClear()">
+                        </ng-select>
+                    </div>
                 </div>
-            </div>
-            <div class="row"></div>
-            <div class="row">
-                <div class="col s12 m12 l12 titulo3">
-                    <span>{{txt.permiSelecciona + perfil?.nombre}}</span>
+                <div class="row"></div>
+                <div class="row">
+                    <div class="col s12 m12 l12 titulo3">
+                        <span>{{txt.rolSelecciona + rol?.nombre}}</span>
+                    </div>
                 </div>
-            </div>
-            <div formArrayName="items" class="row">
-                <div *ngFor="let pp of getItems.controls| paginate: {id: 'listaFuncionalidadesId',
-                itemsPerPage: pagination.pageSize,
-                currentPage: pagination.page,
-                totalItems: listaFuncionalidades.length
-              }, index as i" [formGroupName]="i" class="col s5 m5 l5">
-                    <div style="margin-bottom: unset;" class="row">
-                        <div class="col s12 m12 l12">
-                            <div id="i">
-                                <div class="cuadro cursorpointer">
-                                    <div style="padding-top: 3%; margin-bottom: 0;" class="row">
-                                        <div style="margin-right: 10px;" class="col s1 m1 l1">
-                                            <div class="switch">
-                                                <label>
-                                                  <input formControlName="activo" type="checkbox" id="{{pp?.get('id')?.value}}">
-                                                  <span class="lever"></span>
-                                                </label>
+                <div formArrayName="items" class="row">
+                    <div *ngFor="let pp of getItems.controls| paginate: {id: 'listaFuncionalidadesId',
+              itemsPerPage: pagination.pageSize,
+              currentPage: pagination.page,
+              totalItems: listaFuncionalidades.length
+            }, index as i" [formGroupName]="i" class="col s12 m4 l4">
+                        <div style="margin-bottom: unset;" class="row">
+                            <div class="col s12 m12 l12">
+                                <div id="i">
+                                    <div class="cuadro cursorpointer">
+                                        <div style="padding-top: 3%; margin-bottom: 0;" class="row">
+                                            <div style="margin-right: 10px;" class="col s1 m1 l1">
+                                                <div class="switch">
+                                                    <label>
+                                                <input formControlName="activo" type="checkbox" id="{{pp?.get('id')?.value}}">
+                                                <span class="lever"></span>
+                                              </label>
+                                                </div>
+                                            </div>
+                                            <div class="col s9 m9 l9">
+                                                <span class="tituloTS2">{{pp?.get('nombre')?.value }}</span>
                                             </div>
                                         </div>
-                                        <div class="col s9 m9 l9">
-                                            <span class="tituloTS2">{{pp?.get('nombre')?.value }}</span>
-                                        </div>
-                                    </div>
-                                    <div style="padding-bottom: 2%; height: 10vh;
-                                    overflow: auto;" class="row">
-                                        <div class="col s11 m11 l11 offset-s1 offset-m1 offset-l1">
-                                            <span class="claroTxt">{{pp?.get('descripcion')?.value }}</span>
+                                        <div style="padding-bottom: 2%; height: 10vh;
+                                  overflow: auto;" class="row">
+                                            <div class="col s11 m11 l11 offset-s1 offset-m1 offset-l1">
+                                                <span class="claroTxt">{{pp?.get('descripcion')?.value }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -194,24 +120,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s12 m12 l12 center-align">
-                    <pagination-controls id="listaFuncionalidadesId" (pageChange)="cambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                <div class="row">
+                    <div class="col s12 m12 l12 center-align">
+                        <pagination-controls id="listaFuncionalidadesId" (pageChange)="cambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s12 m12 l12 bottom-none">
-                    <div class="row centrado">
-                        <div class="col s12 m12 l12">
-                            <button title="Crear pago masivo" class="btn waves-effect waves-teal mybtn" type="button" (click)="crearUsuario()" name="action">
-                    {{ txt.guardar }}
-                    </button>
+                <div class="row">
+                    <div class="col s12 m12 l12 bottom-none">
+                        <div class="row centrado">
+                            <div class="col s12 m12 l12">
+                                <button title="Crear pago masivo" class="btn waves-effect waves-teal mybtn" type="button" (click)="crearUsuario()" name="action">
+                  {{ txt.guardar }}
+                  </button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="row"></div>
             </div>
-            <div class="row"></div>
         </div>
     </div>
 </div>

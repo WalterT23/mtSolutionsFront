@@ -18,6 +18,7 @@ import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { DatosUsuarioComponent } from './componentes/usuario/datos-usuario/datos-usuario.component';
 import localePy from '@angular/common/locales/es-PY';
 import { registerLocaleData } from '@angular/common';
+import { ControlAcceso } from './utils/control-accesso';
 
 registerLocaleData(localePy, 'es');
 
@@ -27,13 +28,14 @@ registerLocaleData(localePy, 'es');
     DashboardComponent,
     LoginComponent,
     UsuarioComponent,
-    DatosUsuarioComponent
+    DatosUsuarioComponent,
+    ControlAcceso
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     NgxPaginationModule,
     HttpClientModule,
     NgSelectModule,

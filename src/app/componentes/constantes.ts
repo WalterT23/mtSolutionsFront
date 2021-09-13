@@ -3,17 +3,29 @@ export const CONSTANTES = {
         route: "login",
         routeArr: ["","login"],
         nombre: "Login"
-    }, 
+    },
     DASHBOARD: {
         route: "dashboard",
         routeArr: ["","dashboard"],
-        permiso: "F_PAG_INICIAL",
+        permiso: "V_PAG_INICIAL",
         nombre: "Pagina de inicio"
     },
     USUARIO: {
         route: "usuario",
         routeArr: ["", "usuario"],
-        permiso: "F_PAG_USUARIO",
+        permiso: "V_PAG_USUARIO",
         nombre: "Pagina de usuario"
+    },
+    CREAR_USUARIO: {
+      route: "crear_usuario",
+      routeArr: ["","usuario", "crear_usuario"],
+      permiso: "F_CREATE_USER",
+      nombre: "Pagina alta de usuario"
+    },
+    EDITAR_USUARIO: {
+      route: "editar_usuario",
+      routeArr: ["", "usuario", "editar_usuario"],
+      permiso: "F_EDIT_USER",
+      nombre: "Pagina edicion de usuario"
     }
 }

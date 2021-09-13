@@ -1,7 +1,6 @@
 import { Directive, ElementRef, Input, AfterViewInit } from '@angular/core';
-import { PermisoDTO } from '../model/token-dto';
 import { AuthService } from '../servicios/login/auth.service';
-import { element } from 'protractor';
+import { PermisoDTO } from '../model/permisoDTO';
 
 @Directive({
   selector: '[ctrlAcceso]'
@@ -28,7 +27,7 @@ export class ControlAcceso implements AfterViewInit {
         const element = auxPermiso[p];
         if (element.startsWith('id_')) {
           this.aux = auxPermiso[1];
-        } else {      
+        } else {
           habilitado = this.listaFuncionalidades.filter(row => row.authority == element).length > 0
           if(habilitado) {
             break;

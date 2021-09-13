@@ -1,5 +1,13 @@
 <div class="cuadroPrincipal">
-    <app-dashboard *ngIf="common.socalero"></app-dashboard>
+    <nav *ngIf="this.common.apagado">
+        <div class="nav-wrapper">
+            <a (click)="menuPrincipal()" title="Ir a la pagina principal" class="brand-logo">{{texto.empresa}}</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li [ctrlAcceso]="path.USUARIO.permiso"><a title="Gestión de Usuario" (click)="menuUsuario()">{{texto.menuusuario}}</a></li>
+                <li><a title="Iniciar Sesión" (click)="logOut()">{{texto.cerrar}}</a></li>
+            </ul>
+        </div>
+    </nav>
     <router-outlet></router-outlet>
     <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
         <p style="color: white">Procesando...</p>

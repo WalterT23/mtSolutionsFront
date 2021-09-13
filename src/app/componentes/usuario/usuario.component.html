@@ -1,12 +1,12 @@
 <div class="row">
-    <div [formGroup]="formCtrl" class="col s10 m10 l10">
+    <div [formGroup]="formCtrl" class="col s10 m10 l10 offset-m1 offset-l1">
         <!--TITULO Y BOTON-->
         <div class="row">
             <div class="col s6 m6 l6">
                 <p class="tituloOP">{{ txt.tituloUsuario }}</p>
             </div>
-            <div class="col s6 m6 l6 derecha">
-                <button style="margin-top: unset;" (click)="crearNuevoUsuario()" title="Crear Usuario" class="btn waves-effect waves-teal mybtn" type="button" name="action">{{txt.buttonUsuario}}</button>
+            <div [ctrlAcceso]="path.CREAR_USUARIO.permiso" class="col s6 m6 l6 derecha">
+                <button (click)="crearNuevoUsuario()" title="Crear Usuario" class="btn waves-effect waves-teal mybtn" type="button" name="action">{{txt.buttonUsuario}}</button>
             </div>
         </div>
         <!--BUSCADOR-->
