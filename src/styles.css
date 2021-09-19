@@ -53,6 +53,8 @@
 a.brand-logo {
     margin-left: 1%;
     cursor: pointer;
+    font-weight: 700;
+    font-family: 'Ubuntu';
 }
 
 .margin-x {
@@ -184,4 +186,58 @@ textarea.materialize-textarea {
 
 .switch label .lever {
     margin: 0 5px;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #9e9e9e;
+}
+
+.verdetalle {
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--black-color)
+}
+
+.div-volver {
+    margin: 12px 0 0 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.volver {
+    padding: auto;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #0277bd;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px;
+    padding: 4px;
+    text-transform: capitalize;
+}
+
+.tituloOP {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.cajon {
+    background: #FFFFFF !important;
+    border: 1px solid #B0BEC5 !important;
+    box-sizing: border-box !important;
+    border-radius: 4px !important;
+}
+
+.titulo3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 0.75rem !important;
+    margin-top: 2rem !important;
+    color: #546E7A;
 }

@@ -1,0 +1,76 @@
+<div [formGroup]="formCtrl" class="row">
+    <div class="col s12 m10 l10 offset-m1 offset-l1">
+        <!--PERFILES Y PERMISOS-->
+        <div class="row">
+            <div class="col s6 m5 l5 titulo2">
+                <span>{{txt.roles}}</span>
+            </div>
+            <div [ctrlAcceso]="path.CREAR_ROL.permiso" class="col s6 m6 l6 bottom-none">
+                <div class="row derecha">
+                    <div class="col s12 m12 l12">
+                        <button (click)="crearNuevoRol()" title="Crear Rol" class="btn waves-effect waves-teal mybtn" type="button" name="action">{{txt.buttonRol}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m10 l10 titulo3">
+                <span>{{txt.selecciona}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l4">
+                <ng-select [virtualScroll]="true" [dropdownPosition]="'bottom'" [searchable]="false" [clearable]="false" id="idSelectorRol" class="custom2" [items]="dataSelect" formControlName="rolSeleccion" bindLabel="nombre" bindValue="id" (change)="onChange()" (clear)="onClear()">
+                </ng-select>
+            </div>
+            <div class="col s12 m1 l1">
+                <i (click)="verDetalleRol()" title="Ver detalle rol" class="material-icons prefix verdetalle">description</i>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s12 m12 l12 titulo3">
+                <span>{{txt.rolSelecciona + rol?.nombre}}</span>
+            </div>
+        </div>
+        <div formArrayName="items" class="row">
+            <div *ngFor="let pp of getItems.controls| paginate: {id: 'listaFuncionalidadesId',itemsPerPage: pagination.pageSize,
+      currentPage: pagination.page,
+      totalItems: listaFuncionalidades.length
+      }, index as i" [formGroupName]="pp?.get('ii')?.value" class="col s12 m4 l4">
+                <div style="margin-bottom: unset;" class="row">
+                    <div class="col s12 m12 l12">
+                        <div id="i">
+                            <div class="cuadro cursorpointer">
+                                <div style="padding-top: 3%; margin-bottom: 0;" class="row">
+                                    <div style="margin-right: 10px;" class="col s1 m1 l1">
+                                        <div class="switch">
+                                            <label>
+                          <input formControlName="activo" type="checkbox" id="{{pp?.get('id')?.value}}">
+                          <span class="lever"></span>
+                        </label>
+                                        </div>
+                                    </div>
+                                    <div class="col s9 m9 l9">
+                                        <span class="tituloTS2">{{pp?.get('nombre')?.value }}</span>
+                                    </div>
+                                </div>
+                                <div style="padding-bottom: 2%; height: 10vh;
+            overflow: auto;" class="row">
+                                    <div class="col s11 m11 l11 offset-s1 offset-m1 offset-l1">
+                                        <span class="claroTxt">{{pp?.get('descripcion')?.value }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12 center-align">
+                <pagination-controls id="listaFuncionalidadesId" (pageChange)="cambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

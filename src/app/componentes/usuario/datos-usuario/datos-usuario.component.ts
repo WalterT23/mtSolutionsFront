@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from '../../../servicios/usuario/usuario.service';
 import { CommonService } from '../../../servicios/common.service';
 import { PaginationDTO } from '../../../model/paginationDTO';
 import { PROPERTIES } from '../../../../environments/mensaje.properties';
 import { CONSTANTES } from '../../constantes';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 declare var M: any;
 
@@ -15,11 +16,13 @@ declare var M: any;
   templateUrl: './datos-usuario.component.html',
   styleUrls: ['./datos-usuario.component.css']
 })
-export class DatosUsuarioComponent implements OnInit {
+export class DatosUsuarioComponent implements OnInit, OnDestroy {
 
   txt: any;
+  path: any;
   location: Location;
   titulo: string = '';
+  mensajeError: string = '';
   file: any;
   fileSize: number;
   fileExtension: any;
@@ -30,12 +33,18 @@ export class DatosUsuarioComponent implements OnInit {
   rol:any;
   listaFuncionalidades: any[] = [];
   pagination: PaginationDTO;
+  verBtnGuardar:boolean = true;
+  verBtnEditar:boolean = true;
+  linkNuevoUsuario: boolean = false;
+  tituloBloqueo:string = '';
+  observableData: Subscription;
 
   constructor(private router: Router,
     location: Location,
     private service: UsuarioService,
     private commonSrv: CommonService) {
     this.txt = PROPERTIES;
+    this.path = CONSTANTES;
     this.commonSrv.apagado = true;
     this.fileSize = 0;
     this.formCtrl = new FormGroup({
@@ -47,28 +56,64 @@ export class DatosUsuarioComponent implements OnInit {
       telefono: new FormControl(undefined, [Validators.required]),
       email: new FormControl(undefined, [Validators.required]),
       rolSeleccion: new FormControl(undefined),
-      items: new FormArray([])
+      items: new FormArray([]),
+      estadoUsuario: new FormControl(false, [Validators.required]),
+      nuevoPass: new FormControl(undefined),
+      repetirPass: new FormControl(undefined)
     });
     this.location = location;
     this.perfilLoanding = true;
 
     this.pagination = {
       page: 1,
-      pageSize: 6
+      pageSize: 4
     }
+    this.observableData = new Subscription();
+
+    this.observableData.add( this.getEstadoUsuario.valueChanges.subscribe((x:any) => {
+      if (x) {
+        this.tituloBloqueo = 'ACTIVO'
+      } else {
+        this.tituloBloqueo = 'INACTIVO'
+      }
+    }));
+
+    this.observableData.add( this.getNuevoPass.valueChanges.subscribe((x:any) => {
+      this.ctrlValor(x);
+    }));
+    this.observableData.add( this.getRepetirPass.valueChanges.subscribe((x:any) => {
+      this.ctrlValor(x);
+    }));
   }
 
   ngOnInit(): void {
     let aux = this.location.path().search(CONSTANTES.CREAR_USUARIO.route);
     if (aux !== -1) {
       this.titulo = this.txt.tituloNuevoUsuario;
+      this.verBtnEditar= false;
+      this.verBtnGuardar = true;
+      this.linkNuevoUsuario = true;
+      this.obtenerRoles();
     } else {
       this.titulo = this.txt.tituloVerUsuario;
+      this.verBtnGuardar = false;
+      this.verBtnEditar = true;
+      if (this.commonSrv.getUsuarioSeleccionado) {
+        this.obtenerUsuario();
+      }
     }
     M.updateTextFields();
-    this.obtenerRoles();
+
     this.obtenerFuncionalidades();
-    //this.obtenerPerfiles();
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {
+      draggable: false,
+      //dismissible: false
+    });
+  }
+
+  ngOnDestroy() {
+    this.observableData.unsubscribe();
   }
 
   get getFileName(): any {
@@ -105,6 +150,18 @@ export class DatosUsuarioComponent implements OnInit {
 
   get getItems(): FormArray {
     return <FormArray>this.formCtrl.get("items");
+  }
+
+  get getEstadoUsuario(): any {
+    return <FormArray>this.formCtrl.get("estadoUsuario");
+  }
+
+  get getNuevoPass(): any {
+    return this.formCtrl.get("nuevoPass");
+  }
+
+  get getRepetirPass(): any {
+    return this.formCtrl.get("repetirPass");
   }
 
   fileChangeEvent(fileInput:any) {
@@ -153,19 +210,18 @@ export class DatosUsuarioComponent implements OnInit {
     this.router.navigate([CONSTANTES.USUARIO.route]);
   }
 
-  obtenerPerfiles() {
-    /*this.service.getListaPerfiles().subscribe(
+  obtenerUsuario() {
+
+    this.service.obtenerUsuario(this.commonSrv.getUsuarioSeleccionado).subscribe(
       respuesta => {
-          this.cargarSelect(respuesta.data?.lista);
-          this.perfilLoanding = false;
+          this.cargarUsuario(respuesta?.data);
       },
       error => {
         if(error && error.status != 403) {
           this.commonSrv.showMsg2(error.error.mensaje, "error",5000);
-          this.perfilLoanding = false;
         }
       }
-    )*/
+    )
   }
 
   obtenerRoles() {
@@ -221,12 +277,39 @@ export class DatosUsuarioComponent implements OnInit {
 
     if (lista) {
       setTimeout(() => {
-        this.getRolSeleccion.setValue(this.dataSelect[0].id);
-        this.rol = this.dataSelect[0];
+        if (!this.getRolSeleccion.value) {
+          this.getRolSeleccion.setValue(this.dataSelect[0].id);
+          this.rol = this.dataSelect[0];
+        }
         this.loadItems()
-      }, 100);
+      }, 300);
     }
 
+  }
+
+  cargarUsuario(usu: any) {
+    this.cargarSelect(usu?.roles);
+    this.getNombreUsuario.setValue(usu?.nombre);
+    this.getNombreUsuario.disable();
+    this.getApellidoUsuario.setValue(usu?.apellido);
+    this.getApellidoUsuario.disable();
+    this.getCedula.setValue(usu?.documento);
+    this.getCedula.disable();
+    this.getDireccion.setValue(usu?.direccion);
+    this.getDireccion.disable();
+    this.getTelefono.setValue(usu?.telefono);
+    this.getTelefono.disable();
+    this.getEmail.setValue(usu?.email);
+    this.getEmail.disable();
+    this.getRolSeleccion.disable();
+    if (usu?.estado == 'ACTIVO') {
+      this.getEstadoUsuario.setValue(true);
+      this.getEstadoUsuario.disable();
+    } else {
+      this.getEstadoUsuario.setValue(false);
+      this.getEstadoUsuario.disable();
+    }
+    this.tituloBloqueo = usu?.estado;
   }
 
   cambioPagina(p: number) {
@@ -278,7 +361,14 @@ export class DatosUsuarioComponent implements OnInit {
           documento: this.getCedula.value.trim().replaceAll('.',''),
           telefono: this.getTelefono.value.trim(),
           email: this.getEmail.value.trim(),
-          rol: this.getRolSeleccion.value
+          rol: this.getRolSeleccion.value,
+          id: null,
+          estado: this.tituloBloqueo,
+          pass: this.getNuevoPass.value
+        }
+        if (this.commonSrv.getUsuarioSeleccionado) {
+          obj.id = this.commonSrv.getUsuarioSeleccionado.id;
+          this.commonSrv.remover();
         }
         this.service.crearUsuario(obj).subscribe(
           respuesta => {
@@ -293,6 +383,34 @@ export class DatosUsuarioComponent implements OnInit {
             }
           }
         )
+      }
+
+  }
+
+  editarUsuario() {
+    this.getNombreUsuario.enable();
+    this.getApellidoUsuario.enable();
+    this.getCedula.enable();
+    this.getDireccion.enable();
+    this.getEmail.enable();
+    this.getTelefono.enable();
+    this.getRolSeleccion.enable();
+    this.obtenerRoles();
+    this.verBtnGuardar = true;
+    this.getEstadoUsuario.enable();
+  }
+
+  ctrlValor(valu: any) {
+      this.mensajeError = '';
+      if (this.getRepetirPass.value) {
+        if (this.getRepetirPass.value != valu) {
+            this.mensajeError = this.txt.errorPass ;
+        }
+      }
+      if (this.getNuevoPass.value) {
+        if (this.getNuevoPass.value != valu) {
+          this.mensajeError = this.txt.errorPass;
+        }
       }
 
   }

@@ -4,6 +4,7 @@
             <a (click)="menuPrincipal()" title="Ir a la pagina principal" class="brand-logo">{{texto.empresa}}</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li [ctrlAcceso]="path.USUARIO.permiso"><a title="Gestión de Usuario" (click)="menuUsuario()">{{texto.menuusuario}}</a></li>
+                <li [ctrlAcceso]="path.ROLES.permiso"><a title="Gestión de Roles" (click)="menuRoles()">{{texto.menuroles}}</a></li>
                 <li><a title="Iniciar Sesión" (click)="logOut()">{{texto.cerrar}}</a></li>
             </ul>
         </div>

@@ -5,6 +5,7 @@ import { AuthService } from '../login/auth.service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { FiltroDTO } from '../../model/filtroDTO';
+import { UsuarioDTO } from '../../model/usuarioDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,9 @@ export class UsuarioService {
   }
   getListaFuncionalidades(): Observable<MtSolutionsResponse> {
     return this.http.get<MtSolutionsResponse>(`${environment.base_url}/usuarios/funcionalidades`, this.auth.getHeaders());
+  }
+  obtenerUsuario(usuario: any): Observable<MtSolutionsResponse> {
+    return this.http.post<MtSolutionsResponse>(`${environment.base_url}/usuarios/obtener`, usuario, this.auth.getHeaders());
   }
   /*getListaPerfiles(): Observable<MtSolutionsResponse> {
     return this.http.get<MtSolutionsResponse>(`${environment.base_url}/usuarios/perfiles`, this.auth.getHeaders());

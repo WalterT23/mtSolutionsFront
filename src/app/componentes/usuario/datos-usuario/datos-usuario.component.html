@@ -10,6 +10,15 @@
             <div class="col s6 m6 l6">
                 <p class="tituloOP">{{ titulo }}</p>
             </div>
+            <div *ngIf="verBtnEditar" [ctrlAcceso]="path.EDITAR_USUARIO.permiso" class="col s6 m6 l6 bottom-none">
+                <div class="row derecha">
+                    <div class="col s12 m12 l12">
+                        <button title="Editar usuario" class="btn waves-effect waves-teal mybtn" type="button" (click)="editarUsuario()" name="action">
+        {{ txt.editar }}
+        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--GESTION DE IMAGEN-->
         <div class="row">
@@ -25,37 +34,31 @@
             <!--DATOS DEL USUARIO-->
             <div class="col s12 m10 l10">
                 <div class="row bottom-none">
-                    <div class="input-field col s12 m12 l12 bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="id_nombre">{{txt.nombreCompleto}}</label>
                         <input class="bordeadito cajon" [title]="'Ingrese el nombre completo'" maxlength="60" style="height: 2rem;" formControlName="nombreUsuario" id="id_nombre" type="text">
                     </div>
-                </div>
-                <div class="row bottom-none">
-                    <div class="input-field col s12 m12 l12 bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="id_apellido">{{txt.apellidoCompleto}}</label>
                         <input class="bordeadito cajon" [title]="'Ingrese el apellido completo'" maxlength="60" style="height: 2rem;" formControlName="apellidoUsuario" id="id_apellido" type="text">
                     </div>
                 </div>
                 <div class="row bottom-none">
-                    <div class="input-field col s12 m12 l12 bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="id_cedula">{{txt.cedula}}</label>
                         <input class="bordeadito cajon" [title]="'Ingrese el número de documento'" id="id_cedula" style="height: 2rem;" maxlength="10" (keyup)="formatearCi($event)" [(value)]="cedulaFormateado" formControlName="cedula" type="text">
                     </div>
-                </div>
-                <div class="row bottom-none">
-                    <div class="input-field col s12 m12 l12 bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="id_telefono">{{txt.telefono}}</label>
                         <input class="bordeadito cajon" [title]="'Ingrese el número de telefono'" maxlength="12" style="height: 2rem;" formControlName="telefono" id="id_telefono" type="text">
                     </div>
                 </div>
                 <div class="row bottom-none">
-                    <div class="input-field col s12 m12 l12 bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="id_email">{{txt.email}}</label>
                         <input class="bordeadito cajon" [title]="'Ingrese la dirección de correo'" maxlength="20" style="height: 2rem;" formControlName="email" id="id_email" type="text">
                     </div>
-                </div>
-                <div class="row bottom-none">
-                    <div class="input-field col s12 m12 l12 bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="id_cargo">{{txt.direccion}}</label>
                         <input class="bordeadito cajon" [title]="'Ingrese la direccion de su casa'" maxlength="60" style="height: 2rem;" formControlName="direccion" id="id_direccion" type="text">
                     </div>
@@ -68,50 +71,76 @@
                         <span>{{txt.roles}}</span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12 m12 l12 titulo3">
-                        <span>{{txt.selecciona}}</span>
+                <div class="row col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12 m10 l10 titulo3">
+                            <span>{{txt.selecciona}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m10 l10">
+                            <ng-select [virtualScroll]="true" [dropdownPosition]="'bottom'" [searchable]="false" [clearable]="false" id="idSelectorRol" class="custom2" [items]="dataSelect" formControlName="rolSeleccion" bindLabel="nombre" bindValue="id" (change)="onChange()" (clear)="onClear()">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div *ngIf="verBtnEditar" class="row">
+                        <div class="cuadro cursorpointer">
+                            <div style="padding-top: 3%; margin-bottom: 0;" class="row">
+                                <div class="col s1 m1 l1">
+                                    <div class="switch">
+                                        <label>
+                                <input formControlName="estadoUsuario" type="checkbox">
+                                <span class="lever"></span>
+                              </label>
+                                    </div>
+                                </div>
+                                <div class="col s9 m9 l9">
+                                    <span class="tituloTS2">{{ txt.bloqueo }}</span>
+                                </div>
+                            </div>
+                            <div style="padding-bottom: 2%; height: 10vh;
+                  overflow: auto;" class="row">
+                                <div class="col s11 m11 l11 offset-s1 offset-m1 offset-l1">
+                                    <span [ngClass]="tituloBloqueo == 'ACTIVO' ? 'activeColor' : 'noactiveColor'">{{tituloBloqueo }}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12 m4 l4">
-                        <ng-select [virtualScroll]="true" [dropdownPosition]="'bottom'" [searchable]="false" [clearable]="false" id="idSelectorRol" class="custom2" [items]="dataSelect" formControlName="rolSeleccion" bindLabel="nombre" bindValue="id" (change)="onChange()" (clear)="onClear()">
-                        </ng-select>
+                <div class="row col s12 m6 l6">
+                    <div class="row">
+                        <div class="col s12 m12 l12 titulo3">
+                            <span>{{txt.rolSelecciona + rol?.nombre}}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="row"></div>
-                <div class="row">
-                    <div class="col s12 m12 l12 titulo3">
-                        <span>{{txt.rolSelecciona + rol?.nombre}}</span>
-                    </div>
-                </div>
-                <div formArrayName="items" class="row">
-                    <div *ngFor="let pp of getItems.controls| paginate: {id: 'listaFuncionalidadesId',
-              itemsPerPage: pagination.pageSize,
-              currentPage: pagination.page,
-              totalItems: listaFuncionalidades.length
-            }, index as i" [formGroupName]="i" class="col s12 m4 l4">
-                        <div style="margin-bottom: unset;" class="row">
-                            <div class="col s12 m12 l12">
-                                <div id="i">
-                                    <div class="cuadro cursorpointer">
-                                        <div style="padding-top: 3%; margin-bottom: 0;" class="row">
-                                            <div style="margin-right: 10px;" class="col s1 m1 l1">
-                                                <div class="switch">
-                                                    <label>
-                                                <input formControlName="activo" type="checkbox" id="{{pp?.get('id')?.value}}">
-                                                <span class="lever"></span>
-                                              </label>
+                    <div formArrayName="items" class="row">
+                        <div *ngFor="let pp of getItems.controls| paginate: {id: 'listaFuncionalidadesId',
+                itemsPerPage: pagination.pageSize,
+                currentPage: pagination.page,
+                totalItems: listaFuncionalidades.length
+              }, index as i" [formGroupName]="i" class="col s12 m6 l6">
+                            <div style="margin-bottom: unset;" class="row">
+                                <div class="col s12 m12 l12">
+                                    <div id="i">
+                                        <div class="cuadro cursorpointer">
+                                            <div style="padding-top: 3%; margin-bottom: 0;" class="row">
+                                                <div style="margin-right: 20px;" class="col s1 m1 l1">
+                                                    <div class="switch">
+                                                        <label>
+                                                  <input formControlName="activo" type="checkbox" id="{{pp?.get('id')?.value}}">
+                                                  <span class="lever"></span>
+                                                </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col s9 m9 l9">
+                                                    <span class="tituloTS2">{{pp?.get('nombre')?.value }}</span>
                                                 </div>
                                             </div>
-                                            <div class="col s9 m9 l9">
-                                                <span class="tituloTS2">{{pp?.get('nombre')?.value }}</span>
-                                            </div>
-                                        </div>
-                                        <div style="padding-bottom: 2%; height: 10vh;
-                                  overflow: auto;" class="row">
-                                            <div class="col s11 m11 l11 offset-s1 offset-m1 offset-l1">
-                                                <span class="claroTxt">{{pp?.get('descripcion')?.value }}</span>
+                                            <div style="padding-bottom: 2%; height: 5vh;
+                                    overflow: auto;" class="row">
+                                                <div class="col s10 m10 l10 offset-s2 offset-m2 offset-l2">
+                                                    <span class="claroTxt">{{pp?.get('descripcion')?.value }}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -119,24 +148,71 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m12 l12 center-align">
-                        <pagination-controls id="listaFuncionalidadesId" (pageChange)="cambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                    <div class="row">
+                        <div class="col s12 m12 l12 center-align">
+                            <pagination-controls id="listaFuncionalidadesId" (pageChange)="cambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+
+                <div *ngIf="verBtnGuardar" class="row">
                     <div class="col s12 m12 l12 bottom-none">
                         <div class="row centrado">
-                            <div class="col s12 m12 l12">
-                                <button title="Crear pago masivo" class="btn waves-effect waves-teal mybtn" type="button" (click)="crearUsuario()" name="action">
+                            <div *ngIf="!linkNuevoUsuario" class="col s12 m12 l12">
+                                <button title="Actualizar usuario" class="btn waves-effect waves-teal mybtn" type="button" (click)="crearUsuario()" name="action">
                   {{ txt.guardar }}
                   </button>
+                            </div>
+                            <div *ngIf="linkNuevoUsuario" class="col s12 m12 l12">
+                                <button title="Crear usuario" [disabled]="(!this.getNombreUsuario.value || this.getNombreUsuario.value?.trim() == ' ') ||
+                                (!this.getApellidoUsuario.value || this.getApellidoUsuario.value?.trim() == ' ') ||
+                                (!this.getDireccion.value && this.getDireccion.value?.trim() == ' ') ||
+                                (!this.getCedula.value && this.getCedula.value?.trim() == ' ') ||
+                                (!this.getTelefono.value && this.getTelefono.value?.trim() == ' ')" class="btn waves-effect waves-teal mybtn modal-trigger" data-target="modalContraseña" type="button" name="action">
+                {{ txt.guardar }}
+                </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal filtro-->
+<div style="border-radius: 5px; width: 80vh;" id="modalContraseña" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col s12 m12 l12 titulo2">
+                <span>{{txt.tituloPass}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <form [formGroup]="formCtrl" class="col s12 m12 l12">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="idPass">{{txt.nuevoPass}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese una contraseña para el usuario'" maxlength="15" style="height: 2rem;" formControlName="nuevoPass" id="idPass" type="password">
+                    </div>
+                </div>
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="idRepetirPass">{{txt.repetirPass}}</label>
+                        <input class="bordeadito cajon" [title]="'Repita la contraseña'" maxlength="15" style="height: 2rem;" formControlName="repetirPass" id="idRepetirPass" type="password">
+                    </div>
+                </div>
+                <span [ngClass]="mensajeError!=''?'vererror':'ocultarerror'">{{mensajeError}}</span>
+            </form>
+        </div>
+    </div>
+    <div style="height: 10vh;" class="modal-footer">
+        <div class="row">
+            <div class="col s12 m12 l12 izquier">
+                <button [disabled]="(!getNuevoPass.value || getNuevoPass.value?.trim() == ' ') ||
+                (!getRepetirPass.value || getRepetirPass.value?.trim() == ' ') ||
+                (mensajeError != '')" class="btn waves-effect waves-teal mybtn modal-close" (click)="crearUsuario()" type="button" name="action">{{txt.guardar}}</button>
             </div>
         </div>
     </div>

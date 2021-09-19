@@ -10,8 +10,12 @@ declare var M: any;
   providedIn: 'root'
 })
 export class CommonService {
+  private KEYUSE: string = 'usuarioSelect';
+  private KEYUSEROL: string = 'rolSelect';
   url: string = environment.base_url;
   apagado: boolean = false;
+  usuarioSeleccionado: any;
+  rolSeleccionado: any;
   serviceProcesando = new Subject<boolean>();
   cantidadLlamadasEspera = new Subject<number>();
   urlSinLoading: string[] = [];
@@ -23,6 +27,47 @@ export class CommonService {
 
   set setTitle(title: string) {
     this.titleSrv.setTitle('MtSolutions - ' + title);
+  }
+
+  get getUsuarioSeleccionado(): any {
+    if (!this.usuarioSeleccionado) {
+      let z = window.sessionStorage.getItem(btoa(this.KEYUSE))
+      if (z) {
+        this.usuarioSeleccionado = JSON.parse(atob(z));
+      }
+    }
+    return this.usuarioSeleccionado;
+  }
+
+  get getRolSeleccionado(): any {
+    if (!this.rolSeleccionado) {
+      let z = window.sessionStorage.getItem(btoa(this.KEYUSEROL))
+      if (z) {
+        this.rolSeleccionado = JSON.parse(atob(z));
+      }
+    }
+    return this.rolSeleccionado;
+  }
+
+  remover() {
+    window.sessionStorage.removeItem(btoa(this.KEYUSE));
+    window.sessionStorage.removeItem(btoa(this.KEYUSEROL));
+    this.usuarioSeleccionado = undefined;
+    this.setRolSeleccionado = undefined;
+  }
+
+  set setUsuarioSeleccionado(param: any) {
+    if (param) {
+      window.sessionStorage.setItem(btoa(this.KEYUSE), btoa(JSON.stringify(param)));
+      this.usuarioSeleccionado = param;
+    }
+  }
+
+  set setRolSeleccionado(param: any) {
+    if (param) {
+      window.sessionStorage.setItem(btoa(this.KEYUSEROL), btoa(JSON.stringify(param)));
+      this.rolSeleccionado = param;
+    }
   }
 
   isLoading(url: string): boolean {

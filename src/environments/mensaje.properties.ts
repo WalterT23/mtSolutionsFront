@@ -13,7 +13,9 @@ export const PROPERTIES = {
     mensajeAccion: 'Presione "Enter" para confirmar búsqueda',
     verUsuario: 'Ver',
     tituloNuevoUsuario: 'Alta de Usuario',
-    tituloVerUsuario: 'Datos del usuario',
+    tituloNuevoRol: 'Alta de Rol',
+    tituloVerUsuario: 'Datos del Usuario',
+    tituloVerRol: 'Datos del Rol',
     nombreCompleto: 'Nombre',
     apellidoCompleto: 'Apellido',
     direccion: 'Dirección',
@@ -25,5 +27,14 @@ export const PROPERTIES = {
     roles: 'Roles y permisos',
     selecciona: 'Seleccioná un rol',
     rolSelecciona: 'Permisos del rol ',
-
+    editar: 'Editar',
+    bloqueo: 'ESTADO USUARIO',
+    menuroles: 'Roles',
+    buttonRol: 'Crear Rol',
+    descripcion: 'Descripcion',
+    titulo: 'Titulo',
+    tituloPass: 'Gestionar contraseña',
+    nuevoPass: 'Nueva contraseña:',
+    repetirPass: 'Repetir contraseña:',
+    errorPass: 'Las contraseñas no coinciden'
 }

@@ -45,6 +45,8 @@ export class UsuarioComponent implements OnInit {
     var elems = document.getElementById('buscador_id');
     M.CharacterCounter.init(elems);
     this.obtenerUsuarios(this.pagination.pageSize, 0);
+    this.commonSrv.usuarioSeleccionado = null;
+
   }
 
   get getBuscador(): any {
@@ -85,8 +87,9 @@ export class UsuarioComponent implements OnInit {
     )
   }
 
-  verAction() {
-    this.router.navigate([CONSTANTES.CREAR_USUARIO.route]);
+  verAction(obj:any) {
+    this.commonSrv.setUsuarioSeleccionado = obj;
+    this.router.navigate([CONSTANTES.EDITAR_USUARIO.route]);
   }
 
 
