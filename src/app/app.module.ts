@@ -19,6 +19,8 @@ import { DatosUsuarioComponent } from './componentes/usuario/datos-usuario/datos
 import localePy from '@angular/common/locales/es-PY';
 import { registerLocaleData } from '@angular/common';
 import { ControlAcceso } from './utils/control-accesso';
+import { RolesComponent } from './componentes/roles/roles.component';
+import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
 
 registerLocaleData(localePy, 'es');
 
@@ -29,7 +31,9 @@ registerLocaleData(localePy, 'es');
     LoginComponent,
     UsuarioComponent,
     DatosUsuarioComponent,
-    ControlAcceso
+    ControlAcceso,
+    RolesComponent,
+    DatosRolComponent
   ],
   imports: [
     BrowserModule,

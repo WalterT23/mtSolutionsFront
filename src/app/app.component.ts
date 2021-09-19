@@ -30,8 +30,13 @@ export class AppComponent {
     this.router.navigate( [CONSTANTES.USUARIO.route] );
   }
 
+  menuRoles() {
+    this.router.navigate([CONSTANTES.ROLES.route]);
+  }
+
   logOut() {
     this.common.apagado = true;
+    this.common.remover();
     this.auth.logOut();
     this.auth.clearToken();
   }
