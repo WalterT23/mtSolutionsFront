@@ -53,7 +53,7 @@
 a.brand-logo {
     margin-left: 1%;
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 700 !important;
     font-family: 'Ubuntu';
 }
 
@@ -240,4 +240,19 @@ textarea.materialize-textarea {
     margin-left: 0.75rem !important;
     margin-top: 2rem !important;
     color: #546E7A;
+}
+
+.sidenav-trigger {
+    color: var(--black-color);
+}
+
+.support-brand {
+    color: #fff !important;
+    display: inline-block !important;
+    font-size: 2.1rem !important;
+    padding: 0 !important;
+}
+
+.black_c {
+    background-color: var(--black-color) !important;
 }
