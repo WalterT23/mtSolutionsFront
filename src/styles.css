@@ -44,6 +44,7 @@
 
 .bodyClass {
     background: var(--rosa-color);
+    overflow: hidden;
 }
 
 .centrado {
@@ -259,6 +260,35 @@ textarea.materialize-textarea {
 
 .collapsible-body ul li {
     cursor: pointer;
+}
+
+.collapsible {
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+}
+
+.sidenav.sidenav-fixed {
+    top: auto;
+}
+
+header,
+main,
+footer {
+    padding-left: 300px;
+}
+
+.overflow {
+    overflow: scroll;
+    height: 100vh;
+}
+
+@media only screen and (max-width: 992px) {
+    header,
+    main,
+    footer {
+        padding-left: 0;
+    }
 }
 
 
