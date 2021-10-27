@@ -24,5 +24,9 @@ export class DashboardComponent implements OnInit {
     var elems = document.querySelectorAll('.sidenav');
     M.Sidenav.init(elems, {});
 
+
+    //collapsible
+    var elemsc = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(elemsc, {});
   }
 }

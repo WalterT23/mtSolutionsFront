@@ -256,3 +256,7 @@ textarea.materialize-textarea {
 .black_c {
     background-color: var(--black-color) !important;
 }
+
+.collapsible-body ul li {
+    cursor: pointer;
+}

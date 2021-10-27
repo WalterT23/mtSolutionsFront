@@ -5,6 +5,7 @@ import { CONSTANTES } from './componentes/constantes';
 import { Router } from '@angular/router';
 import { AuthService } from './servicios/login/auth.service';
 
+declare var M: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,6 +20,7 @@ export class AppComponent {
 
     this.texto = PROPERTIES;
     this.path = CONSTANTES;
+
 
   }
 
