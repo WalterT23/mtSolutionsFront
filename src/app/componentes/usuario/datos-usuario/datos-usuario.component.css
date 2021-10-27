@@ -13,24 +13,6 @@
     width: 100% !important;
 }
 
-input.bordeadito:focus {
-    border-bottom: 1px solid #201919 !important;
-    box-shadow: 0 1px 0 0 #201919 !important;
-    margin-left: 0.75rem;
-    width: calc(100% - 30px);
-}
-
-input.bordeadito {
-    border: 1px solid #78909C;
-    padding-left: 5px;
-    margin-left: 0.75rem;
-    width: calc(100% - 30px);
-}
-
-.relative {
-    position: relative;
-}
-
 .titulo2 {
     font-size: 20px;
     font-weight: 500;

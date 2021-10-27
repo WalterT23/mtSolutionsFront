@@ -45,5 +45,17 @@ export const CONSTANTES = {
       routeArr: ["","roles", "editar_rol"],
       permiso: "F_EDIT_ROL",
       nombre: "Pagina edicion de roles"
+    },
+    PROVEEDOR: {
+      route: "proveedor",
+      routeArr: ["", "proveedor"],
+      permiso: "V_PAG_PROVEEDOR",
+      nombre: "Pagina de proveedores"
+    },
+    CREAR_PROVEEDOR: {
+      route: "crear_proveedor",
+      routeArr: ["", "crear_proveedor"],
+      permiso: "F_CREATE_PROVEEDOR",
+      nombre: "Pagina alta proveedores"
     }
 }

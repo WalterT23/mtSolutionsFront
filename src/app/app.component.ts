@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { CommonService } from './servicios/common.service';
 import { PROPERTIES } from '../environments/mensaje.properties';
 import { CONSTANTES } from './componentes/constantes';
@@ -11,7 +11,7 @@ declare var M: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewChecked {
   title = 'Mi tienda';
   texto: any;
   path: any;
@@ -23,7 +23,7 @@ export class AppComponent implements AfterViewInit {
 
 
   }
-  ngAfterViewInit(): void {
+  ngAfterViewChecked(): void {
 
     //collapsible
     setTimeout(() => {
@@ -50,6 +50,10 @@ export class AppComponent implements AfterViewInit {
     this.common.remover();
     this.auth.logOut();
     this.auth.clearToken();
+  }
+
+  menuProveedor() {
+    this.router.navigate( [CONSTANTES.PROVEEDOR.route]);
   }
 }
 

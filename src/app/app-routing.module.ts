@@ -8,6 +8,8 @@ import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { DatosUsuarioComponent } from './componentes/usuario/datos-usuario/datos-usuario.component';
 import { RolesComponent } from './componentes/roles/roles.component';
 import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
+import { ProveedoresComponent } from './componentes/proveedor/proveedores/proveedores.component';
+import { GestionarProveedorComponent } from './componentes/proveedor/gestionar-proveedor/gestionar-proveedor.component';
 
 const routes: Routes = [
   {
@@ -57,6 +59,18 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     component: DatosRolComponent,
     data: {paramComponent: CONSTANTES.EDITAR_ROL}
+  },
+  {
+    path: CONSTANTES.PROVEEDOR.route,
+    canActivate: [AuthGuardService],
+    component: ProveedoresComponent,
+    data: {paramComponent: CONSTANTES.PROVEEDOR}
+  },
+  {
+    path: CONSTANTES.CREAR_PROVEEDOR.route,
+    canActivate: [AuthGuardService],
+    component: GestionarProveedorComponent,
+    data: {paramComponent: CONSTANTES.CREAR_PROVEEDOR}
   },
   {
     path: '**', pathMatch: 'full', redirectTo: CONSTANTES.LOGIN.route

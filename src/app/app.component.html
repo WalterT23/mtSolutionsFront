@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="this.common.apagado">
     <div class="nav-wrapper">
         <a (click)="menuPrincipal()" title="Ir a la pagina principal" class="brand-logo">{{texto.empresa}}</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -27,9 +27,9 @@
                                     <span>{{ texto.compras.ordencompra }}</span>
                                 </a>
                             </li>
-                            <li>
-                                <a>
-                                    <i class="material-icons"></i>
+                            <li [ctrlAcceso]="path.PROVEEDOR.permiso">
+                                <a title="Gestión de Proveedores" (click)="menuProveedor()">
+                                    <i class="material-icons">store</i>
                                     <span>{{ texto.compras.proveedor }}</span>
                                 </a>
                             </li>

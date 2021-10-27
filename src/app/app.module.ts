@@ -21,6 +21,8 @@ import { registerLocaleData } from '@angular/common';
 import { ControlAcceso } from './utils/control-accesso';
 import { RolesComponent } from './componentes/roles/roles.component';
 import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
+import { ProveedoresComponent } from './componentes/proveedor/proveedores/proveedores.component';
+import { GestionarProveedorComponent } from './componentes/proveedor/gestionar-proveedor/gestionar-proveedor.component';
 
 registerLocaleData(localePy, 'es');
 
@@ -33,7 +35,9 @@ registerLocaleData(localePy, 'es');
     DatosUsuarioComponent,
     ControlAcceso,
     RolesComponent,
-    DatosRolComponent
+    DatosRolComponent,
+    ProveedoresComponent,
+    GestionarProveedorComponent
   ],
   imports: [
     BrowserModule,

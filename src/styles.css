@@ -270,6 +270,12 @@ textarea.materialize-textarea {
 
 .sidenav.sidenav-fixed {
     top: auto;
+    background: var(--rosa-color);
+}
+
+.sidenav li,
+.sidenav li.active {
+    background-color: white;
 }
 
 header,
@@ -281,6 +287,28 @@ footer {
 .overflow {
     overflow: scroll;
     height: 100vh;
+}
+
+.collapsible.popout {
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+}
+
+.relative {
+    position: relative !important;
+}
+
+input.bordeadito:focus {
+    border-bottom: 1px solid #201919 !important;
+    box-shadow: 0 1px 0 0 #201919 !important;
+    margin-left: 0.75rem !important;
+    width: calc(100% - 30px);
+}
+
+input.bordeadito {
+    border: 1px solid #78909C !important;
+    padding-left: 5px !important;
+    margin-left: 0.75rem !important;
+    width: calc(100% - 30px);
 }
 
 @media only screen and (max-width: 992px) {

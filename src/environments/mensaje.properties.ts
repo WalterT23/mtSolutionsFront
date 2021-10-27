@@ -61,6 +61,9 @@ export const PROPERTIES = {
       moneda: 'Monedas',
       usuario: 'Usuarios',
       roles: 'Roles'
-    }
+    },
+    tituloNuevoProveedor: 'Alta de Proveedor',
+    tituloEditarProveedor: 'Datos del Proveedor',
+    ruc: 'RUC',
 
 }

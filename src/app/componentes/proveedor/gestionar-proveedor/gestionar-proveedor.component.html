@@ -1,0 +1,45 @@
+<div [formGroup]="formCtrl" class="row">
+    <div class="col s10 m10 l10 offset-m1 offset-l1">
+        <!--VOLVER-->
+        <div class="row bottom-none">
+            <div class="row div-volver">
+                <button class="btn-flat volver" (click)="irAProveedores()"><i class="material-icons ">chevron_left</i>Volver</button>
+            </div>
+        </div>
+        <!--TITULO-->
+        <div class="row">
+            <div class="col s6 m6 l6">
+                <p class="tituloOP">{{ titulo }}</p>
+            </div>
+        </div>
+        <!--DATOS DEL USUARIO-->
+        <div class="col s12 m10 l10">
+            <div class="row bottom-none">
+                <div class="input-field col s12 m6 l6 bottom-none">
+                    <label class="relative" for="id_nombre">{{txt.nombreCompleto}}</label>
+                    <input class="bordeadito cajon" [title]="'Ingrese el nombre del proveedor'" maxlength="60" style="height: 2rem;" formControlName="nombreProveedor" id="id_nombre" type="text">
+                </div>
+                <div class="input-field col s12 m6 l6 bottom-none">
+                    <label class="relative" for="id_ruc">{{txt.ruc}}</label>
+                    <input class="bordeadito cajon" [title]="'Ingrese el RUC del proveedor'" maxlength="60" style="height: 2rem;" formControlName="rucProveedor" id="id_ruc" type="text">
+                </div>
+            </div>
+            <div class="row bottom-none">
+                <div class="input-field col s12 m12 l12 bottom-none">
+                    <label class="relative" for="id_direccion">{{txt.direccion}}</label>
+                    <input class="bordeadito cajon" [title]="'Ingrese la direccion'" id="id_direccion" style="height: 2rem;" maxlength="100" formControlName="direccion" type="text">
+                </div>
+            </div>
+            <div class="row bottom-none">
+                <div class="input-field col s12 m6 l6 bottom-none">
+                    <label class="relative" for="id_telefono">{{txt.telefono}}</label>
+                    <input class="bordeadito cajon" [title]="'Ingrese el numero de telefono'" maxlength="20" style="height: 2rem;" formControlName="telefono" id="id_telefono" type="text">
+                </div>
+                <div class="input-field col s12 m6 l6 bottom-none">
+                    <label class="relative" for="id_email">{{txt.email}}</label>
+                    <input class="bordeadito cajon" [title]="'Ingrese la direccion de su casa'" maxlength="60" style="height: 2rem;" formControlName="correo" id="id_email" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
