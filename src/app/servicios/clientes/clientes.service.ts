@@ -13,4 +13,8 @@ export class ClientesService {
 
   constructor(private http: HttpClient,
     private auth: AuthService) { }
+    
+  getListaClientes(cantidad: number, origen: number): Observable<MtSolutionsResponse> {
+    return this.http.get<MtSolutionsResponse>(`${environment.base_url}/ve_clientes/lista?cantidad=${cantidad}&origen=${origen}`, this.auth.getHeaders());
+  }
 }

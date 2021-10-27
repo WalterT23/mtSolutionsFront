@@ -23,6 +23,7 @@ import { RolesComponent } from './componentes/roles/roles.component';
 import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
 import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { CrearClientesComponent } from './componentes/clientes/crear-clientes/crear-clientes.component';
 
 registerLocaleData(localePy, 'es');
 
@@ -36,7 +37,8 @@ registerLocaleData(localePy, 'es');
     ControlAcceso,
     RolesComponent,
     DatosRolComponent,
-    ClientesComponent
+    ClientesComponent,
+    CrearClientesComponent
   ],
   imports: [
     BrowserModule,
