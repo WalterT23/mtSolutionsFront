@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { CommonService } from './servicios/common.service';
 import { PROPERTIES } from '../environments/mensaje.properties';
 import { CONSTANTES } from './componentes/constantes';
@@ -11,7 +11,7 @@ declare var M: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'Mi tienda';
   texto: any;
   path: any;
@@ -21,6 +21,15 @@ export class AppComponent {
     this.texto = PROPERTIES;
     this.path = CONSTANTES;
 
+
+  }
+  ngAfterViewInit(): void {
+
+    //collapsible
+    setTimeout(() => {
+      var elemsc = document.querySelectorAll('.collapsible');
+      M.Collapsible.init(elemsc, {});
+    }, 0);
 
   }
 

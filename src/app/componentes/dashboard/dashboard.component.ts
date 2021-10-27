@@ -22,11 +22,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     var elems = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(elems, {});
+    M.Sidenav.init(elems, {draggable: false});
 
-
-    //collapsible
-    var elemsc = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(elemsc, {});
   }
 }
