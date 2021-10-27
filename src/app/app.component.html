@@ -4,23 +4,124 @@
             <div class="nav-wrapper">
                 <a (click)="menuPrincipal()" title="Ir a la pagina principal" class="brand-logo">{{texto.empresa}}</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li [ctrlAcceso]="path.USUARIO.permiso"><a title="Gestión de Usuario" (click)="menuUsuario()">{{texto.menuusuario}}</a></li>
-                    <li [ctrlAcceso]="path.ROLES.permiso"><a title="Gestión de Roles" (click)="menuRoles()">{{texto.menuroles}}</a></li>
+                    <!--li [ctrlAcceso]="path.USUARIO.permiso"><a title="Gestión de Usuario" (click)="menuUsuario()">{{texto.menuusuario}}</a></li-->
+                    <!--li [ctrlAcceso]="path.ROLES.permiso"><a title="Gestión de Roles" (click)="menuRoles()">{{texto.menuroles}}</a></li-->
                     <li><a title="Iniciar Sesión" (click)="logOut()">{{texto.cerrar}}</a></li>
                 </ul>
             </div>
         </nav>
-        <ul id="slide-out" class="sidenav">
+        <ul id="slide-out" class="sidenav collapsible">
             <li class="black_c centrado">
                 <a (click)="menuPrincipal()" title="Ir a la pagina principal" class="support-brand brand-logo">{{texto.empresa}}</a>
             </li>
-            <li><a routerLink="./clientes"><i class="material-people">Clientes</i>Clientes</a></li>
-            <!--li><a href="#!">Second Link</a></li-->
-            <!--li>
-                <div class="divider"></div>
+            <!--[ctrlAcceso]="componente.F_LISTAR_ORDEN_PAGO.permiso"-->
+            <!-- [routerLink]="[componente.MENU_USUARIO.route]" routerLinkActive="active"-->
+            <li>
+                <div class="collapsible-header"><i class="material-icons">redeem</i>{{ texto.compras.titulo }}</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.compras.ordencompra }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.compras.proveedor }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li><a class="subheader">Subheader</a></li>
-            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li-->
+            <li>
+                <div class="collapsible-header"><i class="material-icons">local_library</i>{{ texto.stock.titulo }}</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.stock.producto }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.stock.inventario }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">local_offer</i>{{ texto.ventas.titulo }}</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.ventas.pedido }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.ventas.factura }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.ventas.remision }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.ventas.reportes }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">settings</i>{{ texto.configuraciones.titulo }}</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.configuraciones.cliente }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.configuraciones.banco }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="material-icons"></i>
+                                <span>{{ texto.configuraciones.moneda }}</span>
+                            </a>
+                        </li>
+                        <li [ctrlAcceso]="path.USUARIO.permiso">
+                            <a title="Gestión de Usuario" (click)="menuUsuario()">
+                                <i class="material-icons">people</i>
+                                <span>{{ texto.configuraciones.usuario }}</span>
+                            </a>
+                        </li>
+                        <li [ctrlAcceso]="path.ROLES.permiso">
+                            <a title="Gestión de Roles" (click)="menuRoles()">
+                                <i class="material-icons">lock</i>
+                                <span>{{ texto.configuraciones.roles }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="small material-icons">menu</i></a>
     </div>

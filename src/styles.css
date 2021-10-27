@@ -257,6 +257,11 @@ textarea.materialize-textarea {
     background-color: var(--black-color) !important;
 }
 
+.collapsible-body ul li {
+    cursor: pointer;
+}
+
+
 .general-margin{
     margin: 2rem 6rem;
 }

@@ -36,5 +36,31 @@ export const PROPERTIES = {
     tituloPass: 'Gestionar contraseña',
     nuevoPass: 'Nueva contraseña:',
     repetirPass: 'Repetir contraseña:',
-    errorPass: 'Las contraseñas no coinciden'
+    errorPass: 'Las contraseñas no coinciden',
+    compras: {
+      titulo: 'Compras',
+      ordencompra: 'Orden de Compra',
+      proveedor: 'Proveedores'
+    },
+    stock: {
+      titulo: 'Stock',
+      producto: 'Articulos',
+      inventario: 'Inventario'
+    },
+    ventas: {
+      titulo: 'Ventas',
+      pedido: 'Pedidos',
+      factura: 'Facturas',
+      remision: 'Remisiones',
+      reportes: 'Reportes'
+    },
+    configuraciones: {
+      titulo: 'Configuraciones',
+      cliente: 'Clientes',
+      banco: 'Bancos',
+      moneda: 'Monedas',
+      usuario: 'Usuarios',
+      roles: 'Roles'
+    }
+
 }
