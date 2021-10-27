@@ -21,6 +21,8 @@ import { registerLocaleData } from '@angular/common';
 import { ControlAcceso } from './utils/control-accesso';
 import { RolesComponent } from './componentes/roles/roles.component';
 import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
+import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 registerLocaleData(localePy, 'es');
 
@@ -33,7 +35,8 @@ registerLocaleData(localePy, 'es');
     DatosUsuarioComponent,
     ControlAcceso,
     RolesComponent,
-    DatosRolComponent
+    DatosRolComponent,
+    ClientesComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ registerLocaleData(localePy, 'es');
     HttpClientModule,
     NgSelectModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    Ng2SmartTableModule
   ],
   providers: [
     AuthService,

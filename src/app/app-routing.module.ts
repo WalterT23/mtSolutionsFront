@@ -8,6 +8,7 @@ import { UsuarioComponent } from './componentes/usuario/usuario.component';
 import { DatosUsuarioComponent } from './componentes/usuario/datos-usuario/datos-usuario.component';
 import { RolesComponent } from './componentes/roles/roles.component';
 import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
+import { ClientesComponent } from './componentes/clientes/clientes.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     component: DatosRolComponent,
     data: {paramComponent: CONSTANTES.EDITAR_ROL}
+  },
+  {
+    path: CONSTANTES.CLIENTES.route,
+    canActivate: [AuthGuardService],
+    component: ClientesComponent/* ,
+    data: {paramComponent: CONSTANTES.EDITAR_ROL} */
   },
   {
     path: '**', pathMatch: 'full', redirectTo: CONSTANTES.LOGIN.route
