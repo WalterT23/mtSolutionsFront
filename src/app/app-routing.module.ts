@@ -10,6 +10,7 @@ import { RolesComponent } from './componentes/roles/roles.component';
 import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
 import { ProveedoresComponent } from './componentes/proveedor/proveedores/proveedores.component';
 import { GestionarProveedorComponent } from './componentes/proveedor/gestionar-proveedor/gestionar-proveedor.component';
+import { ClientesComponent } from './componentes/clientes/clientes.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     component: GestionarProveedorComponent,
     data: {paramComponent: CONSTANTES.CREAR_PROVEEDOR}
+  },
+  {
+    path: CONSTANTES.CLIENTES.route,
+    canActivate: [AuthGuardService],
+    component: ClientesComponent/* ,
+    data: {paramComponent: CONSTANTES.EDITAR_ROL} */
   },
   {
     path: '**', pathMatch: 'full', redirectTo: CONSTANTES.LOGIN.route

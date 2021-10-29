@@ -57,5 +57,11 @@ export const CONSTANTES = {
       routeArr: ["", "crear_proveedor"],
       permiso: "F_CREATE_PROVEEDOR",
       nombre: "Pagina alta proveedores"
+    },
+    CLIENTES: {
+      route: "clientes",
+      routeArr: ["dashboard"],
+      permiso: "V_PAG_INICIAL",
+      nombre: "Pagina de clientes"
     }
 }
