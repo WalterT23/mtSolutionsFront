@@ -49,12 +49,13 @@ registerLocaleData(localePy, 'es');
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2SmartTableModule,
     NgxPaginationModule,
     HttpClientModule,
     NgSelectModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    Ng2SmartTableModule
+
   ],
   providers: [
     AuthService,
