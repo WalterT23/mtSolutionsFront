@@ -13,7 +13,7 @@
             </div>
         </div>
         <!--DATOS DEL USUARIO-->
-        <div class="col s12 m10 l10">
+        <div class="col s12 m12 l12">
             <div class="row bottom-none">
                 <div class="input-field col s12 m6 l6 bottom-none">
                     <label class="relative" for="id_nombre">{{txt.nombreCompleto}}</label>
@@ -38,6 +38,20 @@
                 <div class="input-field col s12 m6 l6 bottom-none">
                     <label class="relative" for="id_email">{{txt.email}}</label>
                     <input class="bordeadito cajon" [title]="'Ingrese la direccion de su casa'" maxlength="60" style="height: 2rem;" formControlName="correo" id="id_email" type="text">
+                </div>
+            </div>
+        </div>
+        <!--BOTON DE ACCION-->
+        <div class="row">
+            <div class="col s12 m12 l12 bottom-none">
+                <div class="row centrado">
+                    <div class="col s12 m12 l12">
+                        <button [disabled]="(!this.getNombreProveedor.value || this.getNombreProveedor.value?.trim() == ' ') ||
+                      (!this.getRucProveedor.value || this.getRucProveedor.value?.trim() == ' ') ||
+                      (!this.getDireccion.value && this.getDireccion.value?.trim() == ' ') ||
+                      (!this.getCorreo.value && this.getCorreo.value?.trim() == ' ') ||
+                      (!this.getTelefono.value && this.getTelefono.value?.trim() == ' ')" title="Crear Proveedor" class="btn waves-effect waves-teal mybtn" type="button" (click)="crearProveedor()" name="action">{{ txt.guardar }}</button>
+                    </div>
                 </div>
             </div>
         </div>

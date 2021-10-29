@@ -5,6 +5,7 @@ import { CommonService } from '../../../servicios/common.service';
 import { PROPERTIES } from '../../../../environments/mensaje.properties';
 import { CONSTANTES } from '../../constantes';
 import { Location } from '@angular/common';
+import { ProveedorService } from '../../../servicios/proveedor/proveedor.service';
 
 declare var M: any;
 
@@ -23,6 +24,7 @@ export class GestionarProveedorComponent implements OnInit {
 
   constructor(private router: Router,
     location: Location,
+    private service: ProveedorService,
     private commonSrv: CommonService) {
       this.txt = PROPERTIES;
       this.path = CONSTANTES;
@@ -46,8 +48,67 @@ export class GestionarProveedorComponent implements OnInit {
     }
   }
 
+  get getNombreProveedor(): any {
+    return this.formCtrl.get('nombreProveedor');
+  }
+
+  get getRucProveedor(): any {
+    return this.formCtrl.get('rucProveedor');
+  }
+
+  get getDireccion(): any {
+    return this.formCtrl.get('direccion');
+  }
+
+  get getTelefono(): any {
+    return this.formCtrl.get('telefono');
+  }
+
+  get getCorreo(): any {
+    return this.formCtrl.get('correo');
+  }
+
 
   irAProveedores() {
     this.router.navigate([CONSTANTES.PROVEEDOR.route]);
+  }
+
+  crearProveedor() {
+    if ((!this.getNombreProveedor.value || this.getNombreProveedor.value?.trim() == ' ') ||
+          (!this.getRucProveedor.value || this.getRucProveedor.value?.trim() == ' ') ||
+          (!this.getDireccion.value && this.getDireccion.value?.trim() == ' ') ||
+          (!this.getCorreo.value && this.getCorreo.value?.trim() == ' ') ||
+          (!this.getTelefono.value && this.getTelefono.value?.trim() == ' ')) {
+          this.commonSrv.showMsg2(this.txt.alerta, 'info', 5000);
+      } else {
+        let obj= {
+          nombre: this.getNombreProveedor.value.trim(),
+          ruc: this.getRucProveedor.value.trim(),
+          direccion: this.getDireccion.value.trim(),
+          telefono: this.getTelefono.value.trim(),
+          correo: this.getCorreo.value.trim()
+        }
+        this.service.crearProveedor(obj).subscribe(
+          respuesta => {
+              this.commonSrv.showMsg2(respuesta?.data, "success", 5000);
+              setTimeout(() => {
+                this.limpiarObjetos();
+              }, 300);
+          },
+          error => {
+            if(error && error.status != 403) {
+              this.commonSrv.showMsg2(error.error.message, "error",5000);
+            }
+          }
+        )
+      }
+  }
+
+  limpiarObjetos() {
+    this.getNombreProveedor.reset();
+    this.getRucProveedor.reset();
+    this.getDireccion.reset();
+    this.getCorreo.reset();
+    this.getTelefono.reset();
   }
 }
