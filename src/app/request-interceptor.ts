@@ -43,15 +43,15 @@ export class RequestInterceptor implements HttpInterceptor {
             error => {
 
                 if (error.status == '0') {
-                    this.commonSrv.showMsg2('No se puede conectar con el servidor, verifique su conexión.', "warning");
+                    this.commonSrv.showMsg2('No se puede conectar con el servidor, verifique su conexión.', "warning",5000);
                 }
 
                 if ((error.status == '400' && error.error.errorCode == 'ACCESS_DENIED') || (error.status == '401' && error.error.exception == 'No autorizado') ) {
 
                     if(error.status == '401' && error.error.exception == 'No autorizado') {
-                        this.commonSrv.showMsg2(error.error.message, "error");
+                        this.commonSrv.showMsg2(error.error.message, "error", 5000);
                     } else {
-                        this.commonSrv.showMsg2("Usted no tiene permiso para acceder al recurso solicitado.", "error");
+                        this.commonSrv.showMsg2("Usted no tiene permiso para acceder al recurso solicitado.", "error",5000);
                     }
 
                 }
@@ -59,7 +59,7 @@ export class RequestInterceptor implements HttpInterceptor {
                 // Si es un error por token expirado entonces manda al login
                 //if (error.error && error.error.error == "invalid_token") {
                 if (error.status == '403') {
-                    this.commonSrv.showMsg2("Su sesión ha expirado", "error");
+                    this.commonSrv.showMsg2("Su sesión ha expirado", "error",5000);
                     this.commonSrv.logoutX();
                     //setTimeout(() => {
                         //this.router.navigate( ['/login'] );

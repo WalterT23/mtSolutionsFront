@@ -41,9 +41,9 @@
                     <div class="collapsible-header"><i class="material-icons">local_library</i>{{ texto.stock.titulo }}</div>
                     <div class="collapsible-body">
                         <ul>
-                            <li>
-                                <a>
-                                    <i class="material-icons"></i>
+                            <li [ctrlAcceso]="path.ARTICULOS.permiso">
+                                <a title="Gestión de Articulos" (click)="menuArticulos()">
+                                    <i class="material-icons">local_grocery_store</i>
                                     <span>{{ texto.stock.producto }}</span>
                                 </a>
                             </li>

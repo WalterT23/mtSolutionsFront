@@ -3,10 +3,10 @@
         <!--TITULO Y BOTON-->
         <div class="row">
             <div class="col s6 m6 l6">
-                <p class="tituloOP">{{ txt.tituloProveedor }}</p>
+                <p class="tituloOP">{{ txt.compras.proveedor }}</p>
             </div>
             <div [ctrlAcceso]="path.CREAR_USUARIO.permiso" class="col s6 m6 l6 derecha">
-                <button (click)="crearNuevoProveedor()" title="Crear Proveedor" class="btn waves-effect waves-teal mybtn" type="button" name="action">{{txt.buttonUsuario}}</button>
+                <button (click)="crearNuevoProveedor()" title="Crear Proveedor" class="btn waves-effect waves-teal mybtn" type="button" name="action">{{txt.crear}}</button>
             </div>
         </div>
         <!--BUSCADOR-->
@@ -55,7 +55,7 @@
                             <td class="tabla fila">
                                 {{op.correo}}
                             </td>
-                            <td class="tabla fila">
+                            <td class="tabla fila" [ngClass]="op.estado ? 'activeColor' : 'noactiveColor'">
                                 {{op.estado?"Activo":"Inactivo"}}
                             </td>
                             <td class="tabla fila">

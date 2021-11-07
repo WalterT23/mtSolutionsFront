@@ -5,6 +5,10 @@
     --naranja-color: #d17630;
 }
 
+* {
+    font-size: 13px;
+}
+
 @font-face {
     font-family: "Ubuntu Bold";
     src: url("assets/fuentes/Ubuntu-Bold.ttf");

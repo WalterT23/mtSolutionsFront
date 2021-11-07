@@ -127,6 +127,7 @@ export class GestionarProveedorComponent implements OnInit {
               this.commonSrv.showMsg2(respuesta?.data, "success", 5000);
               setTimeout(() => {
                 this.limpiarObjetos();
+                this.irAProveedores();
               }, 300);
           },
           error => {

@@ -66,8 +66,26 @@ export const CONSTANTES = {
     },
     CLIENTES: {
       route: "clientes",
-      routeArr: ["dashboard"],
+      routeArr: ["","clientes"],
       permiso: "V_PAG_INICIAL",
       nombre: "Pagina de clientes"
+    },
+    ARTICULOS: {
+      route: "articulo",
+      routeArr: ["","articulo"],
+      permiso: "V_PAG_ARTICULOS",
+      nombre: "Pagina de articulos"
+    },
+    CREAR_ARTICULO: {
+      route: "crear_articulo",
+      routeArr: ["","articulo","crear_articulo"],
+      permiso: "F_CREAR_ARTICULO",
+      nombre: "Pagina alta articulos"
+    },
+    EDITAR_ARTICULO: {
+      route: "editar_articulo",
+      routeArr: ["","roles", "editar_articulo"],
+      permiso: "F_EDIT_ARTICULO",
+      nombre: "Pagina edicion de articulos"
     }
 }

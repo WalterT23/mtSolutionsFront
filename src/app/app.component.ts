@@ -55,6 +55,10 @@ export class AppComponent implements AfterViewChecked {
   menuProveedor() {
     this.router.navigate( [CONSTANTES.PROVEEDOR.route]);
   }
+
+  menuArticulos() {
+    this.router.navigate([CONSTANTES.ARTICULOS.route]);
+  }
 }
 
 

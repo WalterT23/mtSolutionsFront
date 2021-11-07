@@ -50,27 +50,6 @@ export class ProveedoresComponent implements OnInit {
     this.getListarProveedores(this.pagination.pageSize, 0);
   }
 
-  onDeleteConfirm(event:any) {
-    console.log("Delete Event In Console")
-    console.log(event);
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
-  }
-
-  onCreateConfirm(event:any) {
-    console.log("Create Event In Console")
-    console.log(event);
-
-  }
-
-  onSaveConfirm(event:any) {
-    console.log("Edit Event In Console")
-    console.log(event);
-  }
-
   crearNuevoProveedor() {
     this.commonSrv.proveedorSeleccionado = undefined;
     this.router.navigate( [CONSTANTES.CREAR_PROVEEDOR.route] );

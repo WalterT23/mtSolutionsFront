@@ -26,12 +26,16 @@ import { GestionarProveedorComponent } from './componentes/proveedor/gestionar-p
 import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { CrearClientesComponent } from './componentes/clientes/crear-clientes/crear-clientes.component';
+import { ArticulosComponent } from './componentes/articulos/articulos.component';
+import { GestionarArticuloComponent } from './componentes/articulos/gestionar-articulo/gestionar-articulo.component';
+import { MilesPipe } from './pipes/miles.pipe';
 
 registerLocaleData(localePy, 'es');
 
 @NgModule({
   declarations: [
     AppComponent,
+    MilesPipe,
     DashboardComponent,
     LoginComponent,
     UsuarioComponent,
@@ -42,7 +46,9 @@ registerLocaleData(localePy, 'es');
     ProveedoresComponent,
     GestionarProveedorComponent,
     ClientesComponent,
-    CrearClientesComponent
+    CrearClientesComponent,
+    ArticulosComponent,
+    GestionarArticuloComponent
   ],
   imports: [
     BrowserModule,

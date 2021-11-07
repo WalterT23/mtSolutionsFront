@@ -3,6 +3,7 @@ export const PROPERTIES = {
     inicio: 'Iniciar Sesión',
     cerrar: 'Cerrar Sesión',
     bienvenida: 'Bienvenido',
+    crear: 'Crear',
     usuarioRequerido: 'Por favor ingrese su usuario',
     passwordRequerido: 'Por favor ingrese su contraseña',
     usuarioLogin: 'Usuario',
@@ -66,6 +67,8 @@ export const PROPERTIES = {
     tituloNuevoProveedor: 'Alta de Proveedor',
     tituloEditarProveedor: 'Datos del Proveedor',
     ruc: 'RUC',
-    nodata: 'No se encontraron registros'
+    nodata: 'No se encontraron registros',
+    tituloArticulo: 'Articulos',
+
 
 }

@@ -1,0 +1,80 @@
+<div class="row">
+    <div [formGroup]="formCtrl" class="col s10 m10 l10 offset-m1 offset-l1">
+        <!--TITULO Y BOTON-->
+        <div class="row">
+            <div class="col s6 m6 l6">
+                <p class="tituloOP">{{ txt.stock.producto }}</p>
+            </div>
+            <div [ctrlAcceso]="path.CREAR_ARTICULO.permiso" class="col s6 m6 l6 derecha">
+                <button (click)="crearNuevoArticulo()" title="Crear Articulo" class="btn waves-effect waves-teal mybtn" type="button" name="action">{{txt.crear}}</button>
+            </div>
+        </div>
+        <!--BUSCADOR-->
+        <div class="row">
+            <div class="col s12 m5 l5">
+                <div style="margin-top: 0;" class="input-field">
+                    <span id="mensajeId" class="mensajeFocusOut">{{txt.mensajeAccion}}</span>
+                    <input (keypress)="buscarAccion($event)" placeholder="Buscar articulo... Ej.: remera" (focus)="focusEvent('mensajeId','mensajeFocusIn','mensajeFocusOut')" (blur)="blurEvent('mensajeId','mensajeFocusOut','mensajeFocusIn')" data-length="30" maxlength="30"
+                        style="height: 2rem;" formControlName="buscador" id="buscador_id" type="text">
+                    <span title="Limpiar Filtro" style="cursor: pointer; font-size: 12px; font-weight: 600;" *ngIf="filtroActivo" (click)="limpiarFiltro()">Limpiar</span>
+                </div>
+            </div>
+            <div style="margin-top: 2%;" class="col s12 m7 l7 derecha">
+                <span class="registros">Cant. Registros: {{cantActual}} de {{total}}</span>
+            </div>
+        </div>
+        <!--TABLA-->
+        <div *ngIf="lista?.length > 0" class="row">
+            <div class="col s12 m12 l12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="tabla columna">Código</th>
+                            <th class="tabla columna">Descripción</th>
+                            <th class="tabla columna">Ubicación</th>
+                            <th class="tabla columna">Categoria</th>
+                            <th class="tabla columna centrado">Costo Unitario</th>
+                            <th class="tabla columna centrado">Ultimo Costo</th>
+                            <th class="tabla columna centrado">Precio Venta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let op of lista | paginate: { id: 'idTablaArticulo', itemsPerPage: pagination.pageSize, currentPage: pagination.page, totalItems: total }">
+                            <td class="tabla fila">{{ op.codArticulo }}</td>
+                            <td class="tabla fila">
+                                {{ op.descripcion }}
+                            </td>
+                            <td class="tabla fila">
+                                <div class="cortaditos">{{ op.ubicacion }}</div>
+                            </td>
+                            <td class="tabla fila">
+                                {{ op.categoria }}
+                            </td>
+                            <td class="tabla fila derecha">
+                                {{ op.costoUnitario | miles}}
+                            </td>
+                            <td class="tabla fila derecha">
+                                {{ op.ultimoCosto | miles}}
+                            </td>
+                            <td class="tabla fila derecha">
+                                {{ op.precioVenta | miles}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <pagination-controls id="idTablaArticulo" (pageChange)="cambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!(lista?.length > 0)" style="text-align: center" class="row">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <p>{{ txt.nodata }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

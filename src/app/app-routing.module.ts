@@ -11,6 +11,7 @@ import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.compo
 import { ProveedoresComponent } from './componentes/proveedor/proveedores/proveedores.component';
 import { GestionarProveedorComponent } from './componentes/proveedor/gestionar-proveedor/gestionar-proveedor.component';
 import { ClientesComponent } from './componentes/clientes/clientes.component';
+import { ArticulosComponent } from './componentes/articulos/articulos.component';
 
 const routes: Routes = [
   {
@@ -84,6 +85,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     component: GestionarProveedorComponent,
     data: {paramComponent: CONSTANTES.EDITAR_PROVEEDOR}
+  },
+  {
+    path: CONSTANTES.ARTICULOS.route,
+    canActivate: [AuthGuardService],
+    component: ArticulosComponent,
+    data: {paramComponent: CONSTANTES.ARTICULOS}
   },
   {
     path: '**', pathMatch: 'full', redirectTo: CONSTANTES.LOGIN.route
