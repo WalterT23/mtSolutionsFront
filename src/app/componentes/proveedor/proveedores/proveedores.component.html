@@ -1,9 +1,86 @@
 <div class="row">
-
-    <div class="general-margin">
-        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
+    <div [formGroup]="formCtrl" class="col s10 m10 l10 offset-m1 offset-l1">
+        <!--TITULO Y BOTON-->
+        <div class="row">
+            <div class="col s6 m6 l6">
+                <p class="tituloOP">{{ txt.tituloProveedor }}</p>
+            </div>
+            <div [ctrlAcceso]="path.CREAR_USUARIO.permiso" class="col s6 m6 l6 derecha">
+                <button (click)="crearNuevoProveedor()" title="Crear Proveedor" class="btn waves-effect waves-teal mybtn" type="button" name="action">{{txt.buttonUsuario}}</button>
+            </div>
+        </div>
+        <!--BUSCADOR-->
+        <div class="row">
+            <div class="col s12 m5 l5">
+                <div style="margin-top: 0;" class="input-field">
+                    <span id="mensajeId" class="mensajeFocusOut">{{txt.mensajeAccion}}</span>
+                    <input (keypress)="buscarAccion($event)" placeholder="Buscar proveedor... Ej.: Pagopar" (focus)="focusEvent('mensajeId','mensajeFocusIn','mensajeFocusOut')" (blur)="blurEvent('mensajeId','mensajeFocusOut','mensajeFocusIn')" data-length="30" maxlength="30"
+                        style="height: 2rem;" formControlName="buscador" id="buscador_id" type="text">
+                    <span title="Limpiar Filtro" style="cursor: pointer; font-size: 12px; font-weight: 600;" *ngIf="filtroActivo" (click)="limpiarFiltro()">Limpiar</span>
+                </div>
+            </div>
+            <div style="margin-top: 2%;" class="col s12 m7 l7 derecha">
+                <span class="registros">Cant. Registros: {{cantActualProveedores}} de {{totalProveedores}}</span>
+            </div>
+        </div>
+        <!--TABLA-->
+        <div *ngIf="listaProveedores?.length > 0" class="row">
+            <div class="col s12 m12 l12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="tabla columna">Nombre</th>
+                            <th class="tabla columna">RUC</th>
+                            <th class="tabla columna">Dirección</th>
+                            <th class="tabla columna">Telefono</th>
+                            <th class="tabla columna">Correo</th>
+                            <th class="tabla columna">Estado</th>
+                            <th class="tabla columna">Fecha</th>
+                            <th class="tabla columna">Usuario</th>
+                            <th class="tabla columna"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let op of listaProveedores | paginate: { id: 'lstProvee', itemsPerPage: pagination.pageSize, currentPage: pagination.page, totalItems: totalProveedores }">
+                            <td class="tabla fila">{{op.nombre}}</td>
+                            <td class="tabla fila">
+                                {{op.ruc}}
+                            </td>
+                            <td class="tabla fila">
+                                <div class="cortaditos">{{op.direccion}}</div>
+                            </td>
+                            <td class="tabla fila">
+                                {{op.telefono}}
+                            </td>
+                            <td class="tabla fila">
+                                {{op.correo}}
+                            </td>
+                            <td class="tabla fila">
+                                {{op.estado?"Activo":"Inactivo"}}
+                            </td>
+                            <td class="tabla fila">
+                                {{ op.fechaCreacion | date: "dd/MM/yyyy" }}
+                            </td>
+                            <td class="tabla fila">{{ op.usuarioCreacion }}</td>
+                            <td class="tabla fila">
+                                <span [ctrlAcceso]="path.EDITAR_PROVEEDOR.permiso" class="accioncss" title="Modificar proveedor" (click)="modificarProveedor(op.idProveedor)"><i class="material-icons">edit</i></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <pagination-controls id="lstProvee" (pageChange)="cambioPagina($event)" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!(listaProveedores?.length > 0)" style="text-align: center" class="row">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <p>{{ txt.nodata }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-    <!-- <ng2-smart-table [settings]="settings"></ng2-smart-table> -->
 </div>

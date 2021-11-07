@@ -58,6 +58,12 @@ export const CONSTANTES = {
       permiso: "F_CREATE_PROVEEDOR",
       nombre: "Pagina alta proveedores"
     },
+    EDITAR_PROVEEDOR: {
+      route: "editar_proveedor",
+      routeArr: ["", "editar_proveedor"],
+      permiso: "F_EDITAR_PROVEEDOR",
+      nombre: "Pagina edicion proveedores"
+    },
     CLIENTES: {
       route: "clientes",
       routeArr: ["dashboard"],

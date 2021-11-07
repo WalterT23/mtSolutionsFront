@@ -80,6 +80,12 @@ const routes: Routes = [
     data: {paramComponent: CONSTANTES.EDITAR_ROL} */
   },
   {
+    path: CONSTANTES.EDITAR_PROVEEDOR.route,
+    canActivate: [AuthGuardService],
+    component: GestionarProveedorComponent,
+    data: {paramComponent: CONSTANTES.EDITAR_PROVEEDOR}
+  },
+  {
     path: '**', pathMatch: 'full', redirectTo: CONSTANTES.LOGIN.route
   }
 ];

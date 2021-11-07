@@ -319,11 +319,53 @@ input.bordeadito {
     }
 }
 
-
-.general-margin{
+.general-margin {
     margin: 2rem 6rem;
 }
 
-.icon-margin{
+.icon-margin {
     margin-right: 5px;
+}
+
+input#buscador_id:focus {
+    border-bottom: 1px solid #201919;
+    box-shadow: 0 1px 0 0 #201919;
+}
+
+input#buscador_id {
+    border: 1px solid #78909C;
+    padding-left: 5px;
+}
+
+.mensajeFocusOut {
+    font-size: 11px;
+    visibility: hidden;
+}
+
+.mensajeFocusIn {
+    font-size: 11px;
+    visibility: visible;
+}
+
+.contadorIn {
+    visibility: visible;
+}
+
+.contadorOut {
+    visibility: hidden;
+}
+
+.accioncss {
+    color: #0277BD;
+    cursor: pointer;
+}
+
+.activeColor {
+    color: green;
+    font-weight: 600;
+}
+
+.noactiveColor {
+    color: red;
+    font-weight: 600;
 }

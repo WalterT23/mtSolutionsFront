@@ -62,8 +62,10 @@ export const PROPERTIES = {
       usuario: 'Usuarios',
       roles: 'Roles'
     },
+    tituloProveedor: 'Proveedores',
     tituloNuevoProveedor: 'Alta de Proveedor',
     tituloEditarProveedor: 'Datos del Proveedor',
     ruc: 'RUC',
+    nodata: 'No se encontraron registros'
 
 }

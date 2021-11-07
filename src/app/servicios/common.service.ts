@@ -12,8 +12,10 @@ declare var M: any;
 export class CommonService {
   private KEYUSE: string = 'usuarioSelect';
   private KEYUSEROL: string = 'rolSelect';
+  private KEYPROVEEDOR: string = 'proveedorSelect';
   url: string = environment.base_url;
   apagado: boolean = false;
+  proveedorSeleccionado: any;
   usuarioSeleccionado: any;
   rolSeleccionado: any;
   serviceProcesando = new Subject<boolean>();
@@ -49,17 +51,32 @@ export class CommonService {
     return this.rolSeleccionado;
   }
 
+  get getProveedorSeleccionado(): any {
+    if (!this.proveedorSeleccionado) {
+      let z = window.sessionStorage.getItem(btoa(this.KEYPROVEEDOR))
+      if (z) {
+        this.proveedorSeleccionado = JSON.parse(atob(z));
+      }
+    }
+    return this.proveedorSeleccionado;
+  }
+
   remover() {
     window.sessionStorage.removeItem(btoa(this.KEYUSE));
     window.sessionStorage.removeItem(btoa(this.KEYUSEROL));
+    window.sessionStorage.removeItem(btoa(this.KEYPROVEEDOR));
     this.usuarioSeleccionado = undefined;
-    this.setRolSeleccionado = undefined;
+    this.rolSeleccionado = undefined;
+    this.proveedorSeleccionado = undefined;
   }
 
   set setUsuarioSeleccionado(param: any) {
     if (param) {
       window.sessionStorage.setItem(btoa(this.KEYUSE), btoa(JSON.stringify(param)));
       this.usuarioSeleccionado = param;
+    } else {
+      this.rolSeleccionado = undefined;
+      window.sessionStorage.removeItem(btoa(this.KEYUSE));
     }
   }
 
@@ -67,6 +84,19 @@ export class CommonService {
     if (param) {
       window.sessionStorage.setItem(btoa(this.KEYUSEROL), btoa(JSON.stringify(param)));
       this.rolSeleccionado = param;
+    } else {
+      this.rolSeleccionado = undefined;
+      window.sessionStorage.removeItem(btoa(this.KEYUSEROL));
+    }
+  }
+
+  set setProveedorSeleccionado(param: any) {
+    if (param) {
+      window.sessionStorage.setItem(btoa(this.KEYPROVEEDOR), btoa(JSON.stringify(param)));
+      this.proveedorSeleccionado = param;
+    } else {
+      this.rolSeleccionado = undefined;
+      window.sessionStorage.removeItem(btoa(this.KEYPROVEEDOR));
     }
   }
 

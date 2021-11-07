@@ -28,16 +28,6 @@
     color: #546E7A;
 }
 
-.activeColor {
-    color: green;
-    font-weight: 600;
-}
-
-.noactiveColor {
-    color: red;
-    font-weight: 600;
-}
-
 .vererror {
     visibility: visible;
     font-weight: 600;
