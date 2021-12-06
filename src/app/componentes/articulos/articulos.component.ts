@@ -108,7 +108,7 @@ export class ArticulosComponent implements OnInit {
   limpiarFiltro() {
     this.filtroActivo = false;
     this.getBuscador.reset();
-    //this.getListarProveedores(this.pagination.pageSize, 0);
+    this.getListar(this.pagination.pageSize, 0);
   }
 
   cambioPagina(p: number) {
@@ -116,7 +116,7 @@ export class ArticulosComponent implements OnInit {
     if (this.filtroActivo) {
       this.buscador(this.pagination.pageSize, (this.pagination.page -1) * this.cantActual);
     } else  {
-      //this.getListarProveedores(this.pagination.pageSize, (this.pagination.page -1) * this.cantActual);
+      this.getListar(this.pagination.pageSize, (this.pagination.page -1) * this.cantActual);
     }
   }
 

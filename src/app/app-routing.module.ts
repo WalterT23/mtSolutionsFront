@@ -12,6 +12,7 @@ import { ProveedoresComponent } from './componentes/proveedor/proveedores/provee
 import { GestionarProveedorComponent } from './componentes/proveedor/gestionar-proveedor/gestionar-proveedor.component';
 import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { ArticulosComponent } from './componentes/articulos/articulos.component';
+import { GestionarArticuloComponent } from './componentes/articulos/gestionar-articulo/gestionar-articulo.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,12 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     component: ArticulosComponent,
     data: {paramComponent: CONSTANTES.ARTICULOS}
+  },
+  {
+    path: CONSTANTES.CREAR_ARTICULO.route,
+    canActivate: [AuthGuardService],
+    component: GestionarArticuloComponent,
+    data: {paramComponent: CONSTANTES.CREAR_ARTICULO}
   },
   {
     path: '**', pathMatch: 'full', redirectTo: CONSTANTES.LOGIN.route

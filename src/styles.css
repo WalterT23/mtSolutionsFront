@@ -277,11 +277,6 @@ textarea.materialize-textarea {
     background: var(--rosa-color);
 }
 
-.sidenav li,
-.sidenav li.active {
-    background-color: white;
-}
-
 header,
 main,
 footer {
@@ -372,4 +367,24 @@ input#buscador_id {
 .noactiveColor {
     color: red;
     font-weight: 600;
+}
+
+.z-depth-1,
+nav,
+.card-panel,
+.card,
+.toast,
+.btn,
+.btn-large,
+.btn-small,
+.btn-floating,
+.dropdown-content,
+.collapsible,
+.sidenav {
+    box-shadow: unset;
+}
+
+.sidenav .collapsible-body,
+.sidenav.fixed .collapsible-body {
+    background-color: var(--rosa-color);
 }
