@@ -33,6 +33,9 @@ export class UsuarioService {
   obtenerUsuario(usuario: any): Observable<MtSolutionsResponse> {
     return this.http.post<MtSolutionsResponse>(`${environment.base_url}/usuarios/obtener`, usuario, this.auth.getHeaders());
   }
+  verificarUsuario(usuario: any): Observable<MtSolutionsResponse> {
+    return this.http.post<MtSolutionsResponse>(`${environment.base_url}/usuarios/check`, usuario, this.auth.getHeaders());
+  }
   /*getListaPerfiles(): Observable<MtSolutionsResponse> {
     return this.http.get<MtSolutionsResponse>(`${environment.base_url}/usuarios/perfiles`, this.auth.getHeaders());
   }*/

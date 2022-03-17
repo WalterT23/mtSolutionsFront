@@ -1,6 +1,9 @@
 <nav *ngIf="this.common.apagado">
     <div class="nav-wrapper">
-        <a (click)="menuPrincipal()" title="Ir a la pagina principal" class="brand-logo">{{texto.empresa}}</a>
+        <!--div class="left"><i style="font-size: 6rem;" class="material-icons">graphic_eq</i></div-->
+        <div><a (click)="menuPrincipal()" title="Ir a la pagina principal" class="brand-logo">{{texto.empresa}}
+        </a></div>
+        <div class="right"><i style="font-size: 4rem;" class="material-icons">graphic_eq</i></div>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <!--li [ctrlAcceso]="path.USUARIO.permiso"><a title="Gestión de Usuario" (click)="menuUsuario()">{{texto.menuusuario}}</a></li-->
             <!--li [ctrlAcceso]="path.ROLES.permiso"><a title="Gestión de Roles" (click)="menuRoles()">{{texto.menuroles}}</a></li-->
@@ -10,7 +13,7 @@
 </nav>
 <header>
     <div class="cuadroPrincipal">
-        <div *ngIf="this.common.apagado">
+        <div class="hoja" *ngIf="this.common.apagado">
             <!--agregar popout en clase para efecto lupa-->
             <ul id="slide-out" class="sidenav sidenav-fixed  collapsible">
                 <!--li class="black_c centrado">
@@ -24,14 +27,14 @@
                         <ul>
                             <li>
                                 <a>
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.compras.ordencompra }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.compras.ordencompra }}</span>
                                 </a>
                             </li>
                             <li [ctrlAcceso]="path.PROVEEDOR.permiso">
                                 <a title="Gestión de Proveedores" (click)="menuProveedor()">
-                                    <i class="material-icons">store</i>
-                                    <span>{{ texto.compras.proveedor }}</span>
+                                    <i class="material-icons blanquito">store</i>
+                                    <span class="blanquito">{{ texto.compras.proveedor }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -43,14 +46,14 @@
                         <ul>
                             <li [ctrlAcceso]="path.ARTICULOS.permiso">
                                 <a title="Gestión de Articulos" (click)="menuArticulos()">
-                                    <i class="material-icons">local_grocery_store</i>
-                                    <span>{{ texto.stock.producto }}</span>
+                                    <i class="material-icons blanquito">local_grocery_store</i>
+                                    <span class="blanquito">{{ texto.stock.producto }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a>
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.stock.inventario }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.stock.inventario }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -62,26 +65,26 @@
                         <ul>
                             <li>
                                 <a>
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.ventas.pedido }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.ventas.pedido }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a>
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.ventas.factura }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.ventas.factura }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a>
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.ventas.remision }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.ventas.remision }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a>
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.ventas.reportes }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.ventas.reportes }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -93,32 +96,32 @@
                         <ul>
                             <li>
                                 <a routerLink="./clientes">
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.configuraciones.cliente }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.configuraciones.cliente }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a>
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.configuraciones.banco }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.configuraciones.banco }}</span>
                                 </a>
                             </li>
                             <li>
                                 <a>
-                                    <i class="material-icons"></i>
-                                    <span>{{ texto.configuraciones.moneda }}</span>
+                                    <i class="material-icons blanquito"></i>
+                                    <span class="blanquito">{{ texto.configuraciones.moneda }}</span>
                                 </a>
                             </li>
                             <li [ctrlAcceso]="path.USUARIO.permiso">
                                 <a title="Gestión de Usuario" (click)="menuUsuario()">
-                                    <i class="material-icons">people</i>
-                                    <span>{{ texto.configuraciones.usuario }}</span>
+                                    <i class="material-icons blanquito">people</i>
+                                    <span class="blanquito">{{ texto.configuraciones.usuario }}</span>
                                 </a>
                             </li>
                             <li [ctrlAcceso]="path.ROLES.permiso">
                                 <a title="Gestión de Roles" (click)="menuRoles()">
-                                    <i class="material-icons">lock</i>
-                                    <span>{{ texto.configuraciones.roles }}</span>
+                                    <i class="material-icons blanquito">lock</i>
+                                    <span class="blanquito">{{ texto.configuraciones.roles }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -130,7 +133,7 @@
 
     </div>
 </header>
-<main class="overflow">
+<main class="overflow hoja">
     <router-outlet></router-outlet>
     <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
         <p style="color: white">Procesando...</p>

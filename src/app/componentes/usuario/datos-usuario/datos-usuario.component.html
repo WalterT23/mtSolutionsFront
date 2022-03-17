@@ -23,16 +23,35 @@
         <!--GESTION DE IMAGEN-->
         <div class="row">
             <!--IMAGEN-->
-            <div class="col s12 m2 l2">
+            <!--div class="col s12 m2 l2">
                 <div class="card bordeado">
                     <div class="card-image">
                         <img class="classImage" src="assets/img/ejemplo.jpeg" alt="">
                     </div>
                 </div>
-            </div>
-
+            </div-->
             <!--DATOS DEL USUARIO-->
             <div class="col s12 m10 l10">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="id_username">{{txt.username}}</label>
+                        <input class="bordeadito cajon" (focusout)="disponibilidadUsuario()" [title]="'Ingrese el usuario'" maxlength="60" style="height: 2rem;" formControlName="username" id="id_username" type="text">
+                    </div>
+                    <div class="col s12 m6 l6 bottom-none">
+                        <div *ngIf="alertaUsuarioNoDisponible == true" class="alerta">
+                            <i class="material-icons">close</i>
+                            <span style="font-size: 10px;">{{txt.usuarioNoDisponible}}</span>
+                        </div>
+                        <div *ngIf="alertaUsuarioNoDisponible == false" class="correcto">
+                            <i class="material-icons">check</i>
+                            <span style="font-size: 10px;">{{txt.usuarioDisponible}}</span>
+                        </div>
+                    </div>
+                    <!--div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="id_password">{{txt.passwordLogin}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese una contraseña'" maxlength="60" style="height: 2rem;" formControlName="password" id="id_password" type="password">
+                    </div-->
+                </div>
                 <div class="row bottom-none">
                     <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="id_nombre">{{txt.nombreCompleto}}</label>
@@ -62,6 +81,30 @@
                         <label class="relative" for="id_cargo">{{txt.direccion}}</label>
                         <input class="bordeadito cajon" [title]="'Ingrese la direccion de su casa'" maxlength="60" style="height: 2rem;" formControlName="direccion" id="id_direccion" type="text">
                     </div>
+                </div>
+                <div *ngIf="linkNuevoUsuario" class="row bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="id_password">{{txt.passwordLogin}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese una contraseña'" maxlength="60" style="height: 2rem;" formControlName="password" id="id_password" type="password">
+                    </div>
+                    <div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="id_password2">{{txt.repetirPass}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese una contraseña'" maxlength="60" style="height: 2rem;" formControlName="repeatPassword" id="id_password2" type="password">
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <div class="col s12" style="border: 1px dotted #949494;">
+                            <ul style="display: unset;">
+                                <li *ngFor="let v of criteriosList">
+                                    <span style="font-size: 10px;" class="{{ v.clase }} ayuda" id="{{ v.code }}">
+                                  <i style="padding-left: 2%; margin-right: 2%" class="tiny material-icons">{{v.icono}}</i>
+                                  {{ v.descripcion }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bottom-none">
+
                 </div>
             </div>
             <!--PERFILES Y PERMISOS-->
@@ -168,7 +211,9 @@
                                 (!this.getApellidoUsuario.value || this.getApellidoUsuario.value?.trim() == ' ') ||
                                 (!this.getDireccion.value && this.getDireccion.value?.trim() == ' ') ||
                                 (!this.getCedula.value && this.getCedula.value?.trim() == ' ') ||
-                                (!this.getTelefono.value && this.getTelefono.value?.trim() == ' ')" class="btn waves-effect waves-teal mybtn modal-trigger" data-target="modalContraseña" type="button" name="action">
+                                (!this.getTelefono.value && this.getTelefono.value?.trim() == ' ') ||
+                                (alertaUsuarioNoDisponible == true) ||
+                                (passOk == false)" class="btn waves-effect waves-teal mybtn" (click)="crearUsuario()" type="button" name="action">
                 {{ txt.guardar }}
                 </button>
                             </div>
@@ -182,7 +227,7 @@
 </div>
 
 <!--Modal filtro-->
-<div style="border-radius: 5px; width: 80vh;" id="modalContraseña" class="modal">
+<!--div style="border-radius: 5px; width: 80vh;" id="modalContraseña" class="modal">
     <div class="modal-content">
         <div class="row">
             <div class="col s12 m12 l12 titulo2">
@@ -194,13 +239,13 @@
                 <div class="row bottom-none">
                     <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="idPass">{{txt.nuevoPass}}</label>
-                        <input class="bordeadito cajon" [title]="'Ingrese una contraseña para el usuario'" maxlength="15" style="height: 2rem;" formControlName="nuevoPass" id="idPass" type="password">
+                        <input class="bordeadito cajon" [title]="'Ingrese una contraseña para el usuario'" maxlength="15" style="height: 2rem;" formControlName="password" id="idPass" type="password">
                     </div>
                 </div>
                 <div class="row bottom-none">
                     <div class="input-field col s12 m6 l6 bottom-none">
                         <label class="relative" for="idRepetirPass">{{txt.repetirPass}}</label>
-                        <input class="bordeadito cajon" [title]="'Repita la contraseña'" maxlength="15" style="height: 2rem;" formControlName="repetirPass" id="idRepetirPass" type="password">
+                        <input class="bordeadito cajon" [title]="'Repita la contraseña'" maxlength="15" style="height: 2rem;" formControlName="repeatPassword" id="idRepetirPass" type="password">
                     </div>
                 </div>
                 <span [ngClass]="mensajeError!=''?'vererror':'ocultarerror'">{{mensajeError}}</span>
@@ -210,10 +255,10 @@
     <div style="height: 10vh;" class="modal-footer">
         <div class="row">
             <div class="col s12 m12 l12 izquier">
-                <button [disabled]="(!getNuevoPass.value || getNuevoPass.value?.trim() == ' ') ||
-                (!getRepetirPass.value || getRepetirPass.value?.trim() == ' ') ||
+                <button [disabled]="(!getPassword.value || getPassword.value?.trim() == ' ') ||
+                (!getRepeatPassword.value || getRepeatPassword.value?.trim() == ' ') ||
                 (mensajeError != '')" class="btn waves-effect waves-teal mybtn modal-close" (click)="crearUsuario()" type="button" name="action">{{txt.guardar}}</button>
             </div>
         </div>
     </div>
-</div>
+</div-->

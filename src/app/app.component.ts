@@ -30,7 +30,6 @@ export class AppComponent implements AfterViewChecked {
       var elemsc = document.querySelectorAll('.collapsible');
       M.Collapsible.init(elemsc, {});
     }, 0);
-
   }
 
   menuPrincipal() {

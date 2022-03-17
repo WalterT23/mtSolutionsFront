@@ -29,6 +29,14 @@ import { CrearClientesComponent } from './componentes/clientes/crear-clientes/cr
 import { ArticulosComponent } from './componentes/articulos/articulos.component';
 import { GestionarArticuloComponent } from './componentes/articulos/gestionar-articulo/gestionar-articulo.component';
 import { MilesPipe } from './pipes/miles.pipe';
+import { EmpresasComponent } from './componentes/base/empresas/empresas.component';
+import { SucursalesComponent } from './componentes/base/sucursales/sucursales.component';
+import { MonedasComponent } from './componentes/base/monedas/monedas.component';
+import { TransaccionesComponent } from './componentes/base/transacciones/transacciones.component';
+import { PaisesComponent } from './componentes/base/paises/paises.component';
+import { DepartamentosComponent } from './componentes/base/departamentos/departamentos.component';
+import { BarriosComponent } from './componentes/base/barrios/barrios.component';
+import { DireccionesComponent } from './componentes/base/direcciones/direcciones.component';
 
 registerLocaleData(localePy, 'es');
 
@@ -48,7 +56,15 @@ registerLocaleData(localePy, 'es');
     ClientesComponent,
     CrearClientesComponent,
     ArticulosComponent,
-    GestionarArticuloComponent
+    GestionarArticuloComponent,
+    EmpresasComponent,
+    SucursalesComponent,
+    MonedasComponent,
+    TransaccionesComponent,
+    PaisesComponent,
+    DepartamentosComponent,
+    BarriosComponent,
+    DireccionesComponent
   ],
   imports: [
     BrowserModule,

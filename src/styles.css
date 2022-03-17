@@ -3,10 +3,16 @@
     --black-color: #263238;
     --rosa-color: #fff7e4;
     --naranja-color: #d17630;
+    --background-color: #12122e;
+    --header-color: rgba(19, 57, 97, 0.74);
+    --boton-color: #12122e;
+    --detalle-color: #12122e;
+    --backgroun-interior: white;
 }
 
 * {
-    font-size: 13px;
+    font-size: 15px;
+    font-family: 'Ubuntu';
 }
 
 @font-face {
@@ -43,11 +49,12 @@
 }
 
 .nav-wrapper {
-    background-color: var(--black-color);
+    /*background-color: var(--header-color);*/
+    background: linear-gradient(to right, rgb(42, 42, 105), black);
 }
 
 .bodyClass {
-    background: var(--rosa-color);
+    background: var(--background-color);
     overflow: hidden;
 }
 
@@ -59,7 +66,6 @@ a.brand-logo {
     margin-left: 1%;
     cursor: pointer;
     font-weight: 700 !important;
-    font-family: 'Ubuntu';
 }
 
 .margin-x {
@@ -73,8 +79,7 @@ a.brand-logo {
 
 .mybtn {
     text-transform: none !important;
-    font-family: Ubuntu;
-    background-color: var(--black-color) !important;
+    background-color: var(--boton-color) !important;
     border: 1px solid white !important;
     margin-top: 5%;
     border-radius: 5px;
@@ -82,16 +87,11 @@ a.brand-logo {
 
 .mybtnInv {
     text-transform: none !important;
-    font-family: Ubuntu;
     background-color: white !important;
     border: 1px solid var(--black-color) !important;
     margin-top: 5%;
     border-radius: 5px;
     color: var(--black-color);
-}
-
-.centrado {
-    text-align: center;
 }
 
 .derecha {
@@ -129,8 +129,8 @@ input.valid[type=search]:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus,
 .select-wrapper.valid>input.select-dropdown {
-    border-bottom: 1px solid var(--naranja-color) !important;
-    box-shadow: 0 1px 0 0 var(--naranja-color) !important;
+    border-bottom: 1px solid var(--detalle-color) !important;
+    box-shadow: 0 1px 0 0 var(--detalle-color) !important;
 }
 
 input:not([type]):focus:not([readonly]),
@@ -146,15 +146,15 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid var(--naranja-color) !important;
-    box-shadow: 0 1px 0 0 var(--naranja-color) !important;
+    border-bottom: 1px solid var(--detalle-color) !important;
+    box-shadow: 0 1px 0 0 var(--detalle-color) !important;
 }
 
 
 /*.input-field>label,
 label.active,
 label:hover {
-    color: var(--naranja-color) !important;
+    color: var(--detalle-color) !important;
 }*/
 
 input:not([type]),
@@ -170,7 +170,7 @@ input[type=tel]:not(.browser-default),
 input[type=number]:not(.browser-default),
 input[type=search]:not(.browser-default),
 textarea.materialize-textarea {
-    border-bottom: 1px solid var(--naranja-color) !important;
+    border-bottom: 1px solid var(--detalle-color) !important;
 }
 
 .input-field .prefix.active {
@@ -178,7 +178,7 @@ textarea.materialize-textarea {
 }
 
 .ngx-pagination .current {
-    background: var(--black-color) !important;
+    background: var(--detalle-color) !important;
 }
 
 .bottom-none {
@@ -186,11 +186,11 @@ textarea.materialize-textarea {
 }
 
 .switch label input[type=checkbox]:checked+.lever {
-    background-color: var(--black-color);
+    background-color: var(--detalle-color);
 }
 
 .switch label .lever {
-    margin: 0 5px;
+    margin: 1px;
 }
 
 .switch label input[type=checkbox]:checked+.lever:after {
@@ -211,7 +211,6 @@ textarea.materialize-textarea {
 
 .volver {
     padding: auto;
-    font-family: Ubuntu;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -274,7 +273,8 @@ textarea.materialize-textarea {
 
 .sidenav.sidenav-fixed {
     top: auto;
-    background: var(--rosa-color);
+    background: var(--background-color);
+    color: white;
 }
 
 header,
@@ -369,6 +369,37 @@ input#buscador_id {
     font-weight: 600;
 }
 
+
+/*.z-depth-1,
+nav,
+.card-panel,
+.card,
+.toast,
+.btn,
+.btn-large,
+.btn-small,
+.btn-floating,
+.dropdown-content,
+.collapsible,
+.sidenav {
+    box-shadow: unset;
+}*/
+
+.sidenav .collapsible-body,
+.sidenav.fixed .collapsible-body {
+    background-color: var(--background-color);
+}
+
+.backgroundAguaMarca {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    background-position: center;
+    background-image: url("./assets/img/bienv.PNG");
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+
 .z-depth-1,
 nav,
 .card-panel,
@@ -384,7 +415,45 @@ nav,
     box-shadow: unset;
 }
 
-.sidenav .collapsible-body,
-.sidenav.fixed .collapsible-body {
-    background-color: var(--rosa-color);
+.hoja {
+    background-color: var(--backgroun-interior);
+    border-radius: 15px;
+}
+
+.hoja2 {
+    background-color: var(--backgroun-interior);
+    border-radius: 30px;
+    margin-bottom: 1vh;
+}
+
+.cortaditos {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 70%;
+}
+
+.blanquito {
+    color: white !important;
+}
+
+.alerta {
+    color: red;
+    text-align: left;
+    padding-top: 6vh;
+}
+
+.correcto {
+    color: green;
+    text-align: left;
+    padding-top: 6vh;
+}
+
+.alerta i,
+.correcto i {
+    float: left;
+}
+
+.verdeTxt {
+    color: green;
 }

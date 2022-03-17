@@ -23,7 +23,7 @@
                 <ng-select [virtualScroll]="true" [dropdownPosition]="'bottom'" [searchable]="false" [clearable]="false" id="idSelectorRol" class="custom2" [items]="dataSelect" formControlName="rolSeleccion" bindLabel="nombre" bindValue="id" (change)="onChange()" (clear)="onClear()">
                 </ng-select>
             </div>
-            <div class="col s12 m1 l1">
+            <div *ngIf="false" class="col s12 m1 l1">
                 <i (click)="verDetalleRol()" title="Ver detalle rol" class="material-icons prefix verdetalle">description</i>
             </div>
         </div>

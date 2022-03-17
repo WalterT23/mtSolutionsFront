@@ -9,6 +9,7 @@ import { RolDTO } from '../usuario/datos-usuario/datos-usuario.component';
 import { PaginationDTO } from 'src/app/model/paginationDTO';
 import { Subscription } from 'rxjs';
 import { RolService } from '../../servicios/roles/rol.service';
+import { AuthPermService } from '../../servicios/login/auth-perm.service';
 
 declare var M: any;
 @Component({
@@ -29,7 +30,8 @@ export class RolesComponent implements OnInit, OnDestroy {
   constructor(public router:Router,
     public service: UsuarioService,
     public rolService: RolService,
-    private commonSrv: CommonService) {
+    private commonSrv: CommonService,
+    private permiso: AuthPermService) {
       this.txt = PROPERTIES;
       this.path = CONSTANTES;
       this.commonSrv.apagado = true;
@@ -125,6 +127,9 @@ export class RolesComponent implements OnInit, OnDestroy {
           this.rol?.perfiles.forEach((z:any) => {
             if (z) {
               z.funcionalidades.forEach((element:any) => {
+                if (!this.permiso.EDITAR_ROL) {
+                  e.get('activo')?.disable();
+                }
                 if (e?.get('id')?.value == element?.id) {
                   e.get('activo')?.setValue(true);
                 }

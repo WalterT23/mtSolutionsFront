@@ -36,8 +36,8 @@
                             <div class="card-image">
                                 <img class="classImage" src="assets/img/ejemplo.jpeg" alt="">
                             </div>
-                            <div class="card-content centrado">
-                                <p>{{op.nombre + " "+op.apellido}}</p>
+                            <div style="cursor: pointer;" [title]="op.nombre + ' ' +op.apellido" class="card-content centrado">
+                                <p class="cortaditos">{{op.nombre + " "+op.apellido}}</p>
                             </div>
                             <div class="card-action">
                                 <span (click)="verAction(op)" class="accioncss">{{ txt.verUsuario }}</span>
