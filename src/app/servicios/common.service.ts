@@ -14,12 +14,15 @@ export class CommonService {
   private KEYUSEROL: string = 'rolSelect';
   private KEYPROVEEDOR: string = 'proveedorSelect';
   private KEYARTICULO: string = 'articuloSelect';
+  private KEYPARAMETRO: string = 'parametroSelect';
   url: string = environment.base_url;
   apagado: boolean = false;
+  titulo: any;
   proveedorSeleccionado: any;
   usuarioSeleccionado: any;
   rolSeleccionado: any;
   articuloSeleccionado: any;
+  parametroSeleccionado: any;
   serviceProcesando = new Subject<boolean>();
   cantidadLlamadasEspera = new Subject<number>();
   urlSinLoading: string[] = [];
@@ -73,6 +76,16 @@ export class CommonService {
     return this.articuloSeleccionado;
   }
 
+  get getParametroSeleccionado(): any {
+    if (!this.parametroSeleccionado) {
+      let z = window.sessionStorage.getItem(btoa(this.KEYPARAMETRO))
+      if (z) {
+        this.parametroSeleccionado = JSON.parse(atob(z));
+      }
+    }
+    return this.parametroSeleccionado;
+  }
+
   remover() {
     window.sessionStorage.removeItem(btoa(this.KEYUSE));
     window.sessionStorage.removeItem(btoa(this.KEYUSEROL));
@@ -119,6 +132,16 @@ export class CommonService {
     } else {
       this.articuloSeleccionado = undefined;
       window.sessionStorage.removeItem(btoa(this.KEYARTICULO));
+    }
+  }
+
+  set setParametroSeleccionado(param: any) {
+    if (param) {
+      window.sessionStorage.setItem(btoa(this.KEYPARAMETRO), btoa(JSON.stringify(param)));
+      this.parametroSeleccionado = param;
+    } else {
+      this.parametroSeleccionado = undefined;
+      window.sessionStorage.removeItem(btoa(this.KEYPARAMETRO));
     }
   }
 

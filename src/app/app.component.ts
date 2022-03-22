@@ -44,6 +44,10 @@ export class AppComponent implements AfterViewChecked {
     this.router.navigate([CONSTANTES.ROLES.route]);
   }
 
+  menuParametros() {
+    this.router.navigate([CONSTANTES.PARAMETROS.route]);
+  }
+
   logOut() {
     this.common.apagado = true;
     this.common.remover();

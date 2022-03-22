@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PROPERTIES } from 'src/environments/mensaje.properties';
 import { CommonService } from '../../servicios/common.service';
+import { CONSTANTES } from '../constantes';
 
 
 declare var M:any;
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit {
   ) {
     this.texto = PROPERTIES;
     this.common.apagado = true;
+    this.common.titulo = CONSTANTES.DASHBOARD.route;
   }
 
   ngOnInit(): void {

@@ -64,7 +64,12 @@ export const PROPERTIES = {
       banco: 'Bancos',
       moneda: 'Monedas',
       usuario: 'Usuarios',
-      roles: 'Roles'
+      roles: 'Roles',
+      parametros: 'Parametros'
+    },
+    parametros: {
+      titulo: 'Parametros',
+      buttonCrear: 'Crear'
     },
     tituloProveedor: 'Proveedores',
     tituloNuevoProveedor: 'Alta de Proveedor',

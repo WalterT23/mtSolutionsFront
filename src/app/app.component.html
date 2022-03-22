@@ -1,14 +1,24 @@
 <nav *ngIf="this.common.apagado">
     <div class="nav-wrapper">
         <!--div class="left"><i style="font-size: 6rem;" class="material-icons">graphic_eq</i></div-->
-        <div><a (click)="menuPrincipal()" title="Ir a la pagina principal" class="brand-logo">{{texto.empresa}}
-        </a></div>
-        <div class="right"><i style="font-size: 4rem;" class="material-icons">graphic_eq</i></div>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <!--li [ctrlAcceso]="path.USUARIO.permiso"><a title="Gestión de Usuario" (click)="menuUsuario()">{{texto.menuusuario}}</a></li-->
-            <!--li [ctrlAcceso]="path.ROLES.permiso"><a title="Gestión de Roles" (click)="menuRoles()">{{texto.menuroles}}</a></li-->
-            <li><a title="Iniciar Sesión" (click)="logOut()">{{texto.cerrar}}</a></li>
-        </ul>
+        <div class="row">
+            <div class="col s2 m2 l2">
+                <a (click)="menuPrincipal()" title="Ir a la pagina principal" class="brand-logo">{{texto.empresa}}</a>
+            </div>
+            <div class="col s4 m4 l4">
+                <div *ngIf="common.titulo != 'dashboard'" class="tituloSocalo">
+                    <p class="sinmargenes">{{common.titulo}}</p>
+                </div>
+            </div>
+            <div class="col s6 m6 l6">
+                <div class="right"><i style="font-size: 4rem;" class="material-icons">graphic_eq</i></div>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <!--li [ctrlAcceso]="path.USUARIO.permiso"><a title="Gestión de Usuario" (click)="menuUsuario()">{{texto.menuusuario}}</a></li-->
+                    <!--li [ctrlAcceso]="path.ROLES.permiso"><a title="Gestión de Roles" (click)="menuRoles()">{{texto.menuroles}}</a></li-->
+                    <li><a title="Iniciar Sesión" (click)="logOut()">{{texto.cerrar}}</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </nav>
 <header>
@@ -95,7 +105,7 @@
                     <div class="collapsible-body">
                         <ul>
                             <li>
-                                <a routerLink="./clientes">
+                                <a>
                                     <i class="material-icons blanquito"></i>
                                     <span class="blanquito">{{ texto.configuraciones.cliente }}</span>
                                 </a>
@@ -122,6 +132,12 @@
                                 <a title="Gestión de Roles" (click)="menuRoles()">
                                     <i class="material-icons blanquito">lock</i>
                                     <span class="blanquito">{{ texto.configuraciones.roles }}</span>
+                                </a>
+                            </li>
+                            <li [ctrlAcceso]="path.PARAMETROS.permiso">
+                                <a title="Gestión de Parametros basicos del sistema" (click)="menuParametros()">
+                                    <i class="material-icons blanquito">storage</i>
+                                    <span class="blanquito">{{ texto.configuraciones.parametros }}</span>
                                 </a>
                             </li>
                         </ul>

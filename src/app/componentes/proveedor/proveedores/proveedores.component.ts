@@ -36,6 +36,7 @@ export class ProveedoresComponent implements OnInit {
       pageSize: 6
     };
     this.commonSrv.apagado = true;
+    this.commonSrv.titulo = CONSTANTES.PROVEEDOR.nombre
     this.formCtrl = new FormGroup({
       buscador: new FormControl()
     });

@@ -36,6 +36,7 @@ export class ArticulosComponent implements OnInit {
         pageSize: 6
       };
       this.commonSrv.apagado = true;
+      this.commonSrv.titulo = CONSTANTES.ARTICULOS.nombre;
       this.formCtrl = new FormGroup({
         buscador: new FormControl()
       });

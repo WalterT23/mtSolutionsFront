@@ -35,6 +35,7 @@ export class DatosRolComponent implements OnInit, OnDestroy {
       this.txt = PROPERTIES;
       this.path = CONSTANTES;
       this.commonSrv.apagado = true;
+      this.commonSrv.titulo = CONSTANTES.CREAR_ROL.nombre;
       this.location = location;
       this.formCtrl = new FormGroup({
         titulo: new FormControl(undefined),

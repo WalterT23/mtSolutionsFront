@@ -10,9 +10,10 @@ import { RolesComponent } from './componentes/roles/roles.component';
 import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
 import { ProveedoresComponent } from './componentes/proveedor/proveedores/proveedores.component';
 import { GestionarProveedorComponent } from './componentes/proveedor/gestionar-proveedor/gestionar-proveedor.component';
-import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { ArticulosComponent } from './componentes/articulos/articulos.component';
 import { GestionarArticuloComponent } from './componentes/articulos/gestionar-articulo/gestionar-articulo.component';
+import { ParametrosComponent } from './componentes/base/parametros/parametros.component';
+import { DatosParametrosComponent } from './componentes/base/datos-parametros/datos-parametros.component';
 
 const routes: Routes = [
   {
@@ -76,10 +77,22 @@ const routes: Routes = [
     data: {paramComponent: CONSTANTES.CREAR_PROVEEDOR}
   },
   {
-    path: CONSTANTES.CLIENTES.route,
+    path: CONSTANTES.PARAMETROS.route,
     canActivate: [AuthGuardService],
-    component: ClientesComponent/* ,
-    data: {paramComponent: CONSTANTES.EDITAR_ROL} */
+    component: ParametrosComponent,
+    data: {paramComponent: CONSTANTES.PARAMETROS}
+  },
+  {
+    path: CONSTANTES.CREAR_PARAMETROS.route,
+    canActivate: [AuthGuardService],
+    component: DatosParametrosComponent ,
+    data: {paramComponent: CONSTANTES.CREAR_PARAMETROS}
+  },
+  {
+    path: CONSTANTES.EDITAR_PARAMETROS.route,
+    canActivate: [AuthGuardService],
+    component: DatosParametrosComponent ,
+    data: {paramComponent: CONSTANTES.EDITAR_PARAMETROS}
   },
   {
     path: CONSTANTES.EDITAR_PROVEEDOR.route,

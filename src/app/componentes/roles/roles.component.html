@@ -1,7 +1,7 @@
 <div [formGroup]="formCtrl" class="row">
     <div class="col s12 m10 l10 offset-m1 offset-l1">
         <!--PERFILES Y PERMISOS-->
-        <div class="row">
+        <!--div class="row">
             <div class="col s6 m5 l5 titulo2">
                 <span>{{txt.roles}}</span>
             </div>
@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div-->
         <div class="row">
             <div class="col s12 m10 l10 titulo3">
                 <span>{{txt.selecciona}}</span>
@@ -22,6 +22,11 @@
             <div class="col s12 m4 l4">
                 <ng-select [virtualScroll]="true" [dropdownPosition]="'bottom'" [searchable]="false" [clearable]="false" id="idSelectorRol" class="custom2" [items]="dataSelect" formControlName="rolSeleccion" bindLabel="nombre" bindValue="id" (change)="onChange()" (clear)="onClear()">
                 </ng-select>
+            </div>
+            <div [ctrlAcceso]="path.CREAR_ROL.permiso" class="col s12 m1 l1">
+                <button (click)="crearNuevoRol()" title="Crear Rol" class="btn waves-effect waves-teal mybtn mybtncircle" type="button" name="action">
+                <i [ctrlAcceso]="path.CREAR_USUARIO.permiso" class="material-icons">add</i>
+              </button>
             </div>
             <div *ngIf="false" class="col s12 m1 l1">
                 <i (click)="verDetalleRol()" title="Ver detalle rol" class="material-icons prefix verdetalle">description</i>

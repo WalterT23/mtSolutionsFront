@@ -31,6 +31,7 @@ export class UsuarioComponent implements OnInit {
     this.txt = PROPERTIES;
     this.path = CONSTANTES;
     this.commonSrv.apagado = true;
+    this.commonSrv.titulo = CONSTANTES.USUARIO.nombre;
     this.formCtrl = new FormGroup({
       buscador: new FormControl()
     });

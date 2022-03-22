@@ -1,0 +1,58 @@
+<div [formGroup]="formCtrl" class="row">
+    <div class="col s10 m10 l10 offset-m1 offset-l1">
+        <div class="row bottom-none">
+            <div class="row div-volver">
+                <button class="btn-flat volver" (click)="irAParametros()"><i class="material-icons ">chevron_left</i>Volver</button>
+            </div>
+        </div>
+        <!--TITULO-->
+        <div class="row">
+            <div class="col s6 m6 l6">
+                <p class="tituloOP">{{ titulo }}</p>
+            </div>
+            <!--div *ngIf="verBtnEditar" [ctrlAcceso]="path.EDITAR_USUARIO.permiso" class="col s6 m6 l6 bottom-none">
+              <div class="row derecha">
+                  <div class="col s12 m12 l12">
+                      <button title="Editar usuario" class="btn waves-effect waves-teal mybtn" type="button" (click)="editarUsuario()" name="action">
+      {{ txt.editar }}
+      </button>
+                  </div>
+              </div>
+          </div-->
+        </div>
+        <!--GESTION DE IMAGEN-->
+        <div class="row">
+            <!--IMAGEN-->
+            <!--div class="col s12 m2 l2">
+              <div class="card bordeado">
+                  <div class="card-image">
+                      <img class="classImage" src="assets/img/ejemplo.jpeg" alt="">
+                  </div>
+              </div>
+          </div-->
+            <!--DATOS DEL USUARIO-->
+            <div class="col s12 m10 l10">
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="id_username">{{txt.username}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese el usuario'" maxlength="60" style="height: 2rem;" id="id_username" type="text">
+                    </div>
+                </div>
+                <div class="row bottom-none">
+                    <div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="id_nombre">{{txt.nombreCompleto}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese el nombre completo'" maxlength="60" style="height: 2rem;" id="id_nombre" type="text">
+                    </div>
+                    <div class="input-field col s12 m6 l6 bottom-none">
+                        <label class="relative" for="id_apellido">{{txt.apellidoCompleto}}</label>
+                        <input class="bordeadito cajon" [title]="'Ingrese el apellido completo'" maxlength="60" style="height: 2rem;" id="id_apellido" type="text">
+                    </div>
+                </div>
+
+                <div class="row bottom-none">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

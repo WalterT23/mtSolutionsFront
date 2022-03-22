@@ -35,6 +35,7 @@ export class RolesComponent implements OnInit, OnDestroy {
       this.txt = PROPERTIES;
       this.path = CONSTANTES;
       this.commonSrv.apagado = true;
+      this.commonSrv.titulo = CONSTANTES.ROLES.nombre;
       this.formCtrl = new FormGroup({
         rolSeleccion: new FormControl(undefined),
         items: new FormArray([])

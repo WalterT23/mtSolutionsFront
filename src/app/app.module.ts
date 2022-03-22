@@ -23,20 +23,12 @@ import { RolesComponent } from './componentes/roles/roles.component';
 import { DatosRolComponent } from './componentes/roles/datos-rol/datos-rol.component';
 import { ProveedoresComponent } from './componentes/proveedor/proveedores/proveedores.component';
 import { GestionarProveedorComponent } from './componentes/proveedor/gestionar-proveedor/gestionar-proveedor.component';
-import { ClientesComponent } from './componentes/clientes/clientes.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { CrearClientesComponent } from './componentes/clientes/crear-clientes/crear-clientes.component';
 import { ArticulosComponent } from './componentes/articulos/articulos.component';
 import { GestionarArticuloComponent } from './componentes/articulos/gestionar-articulo/gestionar-articulo.component';
 import { MilesPipe } from './pipes/miles.pipe';
-import { EmpresasComponent } from './componentes/base/empresas/empresas.component';
-import { SucursalesComponent } from './componentes/base/sucursales/sucursales.component';
-import { MonedasComponent } from './componentes/base/monedas/monedas.component';
-import { TransaccionesComponent } from './componentes/base/transacciones/transacciones.component';
-import { PaisesComponent } from './componentes/base/paises/paises.component';
-import { DepartamentosComponent } from './componentes/base/departamentos/departamentos.component';
-import { BarriosComponent } from './componentes/base/barrios/barrios.component';
-import { DireccionesComponent } from './componentes/base/direcciones/direcciones.component';
+import { ParametrosComponent } from './componentes/base/parametros/parametros.component';
+import { DatosParametrosComponent } from './componentes/base/datos-parametros/datos-parametros.component';
 
 registerLocaleData(localePy, 'es');
 
@@ -53,18 +45,10 @@ registerLocaleData(localePy, 'es');
     DatosRolComponent,
     ProveedoresComponent,
     GestionarProveedorComponent,
-    ClientesComponent,
-    CrearClientesComponent,
     ArticulosComponent,
     GestionarArticuloComponent,
-    EmpresasComponent,
-    SucursalesComponent,
-    MonedasComponent,
-    TransaccionesComponent,
-    PaisesComponent,
-    DepartamentosComponent,
-    BarriosComponent,
-    DireccionesComponent
+    ParametrosComponent,
+    DatosParametrosComponent
   ],
   imports: [
     BrowserModule,
@@ -76,8 +60,7 @@ registerLocaleData(localePy, 'es');
     HttpClientModule,
     NgSelectModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule,
-
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,

@@ -49,6 +49,7 @@ export class DatosUsuarioComponent implements OnInit, OnDestroy {
     this.txt = PROPERTIES;
     this.path = CONSTANTES;
     this.commonSrv.apagado = true;
+    this.commonSrv.titulo = CONSTANTES.CREAR_USUARIO.nombre;
     this.fileSize = 0;
     this.formCtrl = new FormGroup({
       fileName: new FormControl(undefined, [Validators.required]),
@@ -99,12 +100,14 @@ export class DatosUsuarioComponent implements OnInit, OnDestroy {
     let aux = this.location.path().search(CONSTANTES.CREAR_USUARIO.route);
     if (aux !== -1) {
       this.titulo = this.txt.tituloNuevoUsuario;
+      this.commonSrv.titulo = CONSTANTES.CREAR_USUARIO.nombre;
       this.verBtnEditar= false;
       this.verBtnGuardar = true;
       this.linkNuevoUsuario = true;
       this.obtenerRoles();
     } else {
       this.titulo = this.txt.tituloVerUsuario;
+      this.commonSrv.titulo = CONSTANTES.EDITAR_USUARIO.nombre;
       this.verBtnGuardar = false;
       this.verBtnEditar = true;
       if (this.commonSrv.getUsuarioSeleccionado) {

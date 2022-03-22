@@ -14,31 +14,31 @@ export const CONSTANTES = {
         route: "usuario",
         routeArr: ["", "usuario"],
         permiso: "V_PAG_USUARIO",
-        nombre: "Pagina de usuario"
+        nombre: "Usuarios"
     },
     CREAR_USUARIO: {
       route: "crear_usuario",
       routeArr: ["","usuario", "crear_usuario"],
       permiso: "F_CREATE_USER",
-      nombre: "Pagina alta de usuario"
+      nombre: "Crear usuario"
     },
     EDITAR_USUARIO: {
       route: "editar_usuario",
       routeArr: ["", "usuario", "editar_usuario"],
       permiso: "F_EDIT_USER",
-      nombre: "Pagina edicion de usuario"
+      nombre: "Editar usuario"
     },
     ROLES: {
       route: "roles",
       routeArr: ["", "roles"],
       permiso: "V_PAG_ROLES",
-      nombre: "Pagina de roles"
+      nombre: "Roles y permisos"
     },
     CREAR_ROL: {
       route: "crear_rol",
       routeArr: ["","roles", "crear_rol"],
       permiso: "F_CREATE_ROL",
-      nombre: "Pagina alta roles"
+      nombre: "Crear rol"
     },
     EDITAR_ROL: {
       route: "editar_rol",
@@ -50,7 +50,7 @@ export const CONSTANTES = {
       route: "proveedor",
       routeArr: ["", "proveedor"],
       permiso: "V_PAG_PROVEEDOR",
-      nombre: "Pagina de proveedores"
+      nombre: "Proveedores"
     },
     CREAR_PROVEEDOR: {
       route: "crear_proveedor",
@@ -74,7 +74,7 @@ export const CONSTANTES = {
       route: "articulo",
       routeArr: ["","articulo"],
       permiso: "V_PAG_ARTICULOS",
-      nombre: "Pagina de articulos"
+      nombre: "Articulos"
     },
     CREAR_ARTICULO: {
       route: "crear_articulo",
@@ -87,5 +87,24 @@ export const CONSTANTES = {
       routeArr: ["","roles", "editar_articulo"],
       permiso: "F_EDIT_ARTICULO",
       nombre: "Pagina edicion de articulos"
+    },
+    PARAMETROS: {
+      route: "parametros",
+      routeArr: ["", "parametros"],
+      permiso: "F_LISTAR_PARAMETROS",
+      nombre: "Parametros"
+    },
+    CREAR_PARAMETROS: {
+      route: "crear_parametro",
+      routeArr: ["", "parametros","crear_parametro"],
+      permiso: "F_AGREGAR_PARAMETROS",
+      nombre: "Crear "
+    },
+    EDITAR_PARAMETROS: {
+      route: "editar_parametro",
+      routeArr: ["", "parametros","editar_parametro"],
+      permiso: "F_EDITAR_PARAMETROS",
+      nombre: "Pagina editar parametros"
     }
+
 }

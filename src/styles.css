@@ -457,3 +457,30 @@ nav,
 .verdeTxt {
     color: green;
 }
+
+.responsive-table {
+    margin-left: 0.75rem;
+    width: 65vw;
+}
+
+.mybtncircle {
+    margin-top: 0%;
+    margin-left: 1%;
+}
+
+.tituloSocalo {
+    background: linear-gradient(-190deg, black, #151535);
+    background: linear-gradient(to right, rgb(42, 42, 105), black);
+    /*transform: skew(-5deg);*/
+    transform: skew(-190deg);
+    position: relative;
+    margin-left: 3vw;
+    Box-shadow: 5px 5px #ffffff, 5px 0px 0 0px #ffffff, 0px 0px 0px 5px #ffffff;
+}
+
+.sinmargenes {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 4vw;
+    font-size: 23px;
+}

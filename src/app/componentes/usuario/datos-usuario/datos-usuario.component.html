@@ -2,24 +2,26 @@
     <div class="col s10 m10 l10 offset-m1 offset-l1">
         <div class="row bottom-none">
             <div class="row div-volver">
-                <button class="btn-flat volver" (click)="irAUsuario()"><i class="material-icons ">chevron_left</i>Volver</button>
-            </div>
-        </div>
-        <!--TITULO-->
-        <div class="row">
-            <div class="col s6 m6 l6">
-                <p class="tituloOP">{{ titulo }}</p>
-            </div>
-            <div *ngIf="verBtnEditar" [ctrlAcceso]="path.EDITAR_USUARIO.permiso" class="col s6 m6 l6 bottom-none">
-                <div class="row derecha">
-                    <div class="col s12 m12 l12">
-                        <button title="Editar usuario" class="btn waves-effect waves-teal mybtn" type="button" (click)="editarUsuario()" name="action">
-        {{ txt.editar }}
-        </button>
+                <div class="col s6 m6 l6 izquierda">
+                    <button class="btn-flat volver" (click)="irAUsuario()"><i class="material-icons ">chevron_left</i>Volver</button>
+                </div>
+                <div class="col s6 m6 l6 bottom-none">
+                    <div *ngIf="verBtnEditar" [ctrlAcceso]="path.EDITAR_USUARIO.permiso" class="row derecha">
+                        <div class="col s12 m12 l12">
+                            <button title="Editar usuario" class="btn waves-effect waves-teal mybtn" type="button" (click)="editarUsuario()" name="action">
+          {{ txt.editar }}
+          </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--TITULO-->
+        <!--div class="row">
+            <div class="col s6 m6 l6">
+                <p class="tituloOP">{{ titulo }}</p>
+            </div>
+        </div-->
         <!--GESTION DE IMAGEN-->
         <div class="row">
             <!--IMAGEN-->
